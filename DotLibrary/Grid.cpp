@@ -20,10 +20,9 @@ Grid::~Grid(){
 // Code underneath creates the grid with all nodes and their coordinates
 string Grid::setup(int width, int height) {
 	// Initializing variables
-	int currentxPos = 0;
-	int currentyPos = 0;
-	Origin = new Dot(currentxPos, currentyPos);
-	LastDot = Origin;
+		
+	Origin = new Dot(0, 0);
+	LastDot = nullptr;
 
 	// Temporary pointers 
 	Dot *currentDot = Origin;
@@ -32,10 +31,10 @@ string Grid::setup(int width, int height) {
 	Dot *currentDot_PrevLine = Origin;
 
 	// Grid creation
-	for (int i = 0; i<height; i++) {
-		for (int j = 0; j<width; j++) {
-			currentxPos++;
+	for (int currentyPos = 0; currentyPos < height; currentyPos++) {
+		for (int currentxPos = 0; currentxPos < width; currentxPos++) {
 			currentDot->RIGHT = new Dot(currentxPos, currentyPos);
+			cout << "The new dot had x = " << currentxPos << " and y = " << currentyPos << endl;
 			prevDot = currentDot;
 			currentDot = currentDot->RIGHT;
 			currentDot->LEFT = prevDot;
@@ -44,33 +43,78 @@ string Grid::setup(int width, int height) {
 			currentDot_PrevLine = currentDot_PrevLine->RIGHT;
 			currentDot->UP = currentDot_PrevLine;
 			currentDot_PrevLine->DOWN = currentDot;
-			cout << ".";
 		}
-		currentxPos = 0;
-		currentyPos++;
-		if (currentyPos == height) {
+		// Reset x cordinate for next level
+		cout << "CurrentyPos: " << currentyPos << " Height: " << height << endl;
+		if (currentyPos < height - 1) {
+			// Reset the currentDot to the beginning of the line
+			currentDot = firstDotOfCurrentLine;
+
+			// CurrentDot creates a Dot underneath itself
+			currentDot->DOWN = new Dot(0, currentyPos);
+			prevDot = currentDot;
+
+			// CurrentDot now moves down and connects with prevDot
+			currentDot = currentDot->DOWN;
+			currentDot->UP = prevDot;
+
+			// FirstDotOfCurrentLine goes down one step to match the current y level
+			firstDotOfCurrentLine = currentDot;
+
+			// Now prevLine also resets to be one level up
+			currentDot_PrevLine = firstDotOfCurrentLine->UP;
+			cout << "Line " << currentyPos << " was made successfully..." << endl;
+
+		}
+		else {
 			cout << "Line " << currentyPos << " was made successfully... --END--" << endl;
-			break;
+			LastDot = currentDot;
 		}
-
-		// Reset the currentDot to the beginning of the line
-		currentDot = firstDotOfCurrentLine;
-
-		// CurrentDot creates a Dot underneath itself
-		currentDot->DOWN = new Dot(currentxPos, currentyPos);
-		prevDot = currentDot;
-
-		// CurrentDot now moves down and connects with prevDot
-		currentDot = currentDot->DOWN;
-		currentDot->UP = prevDot;
-
-		// FirstDotOfCurrentLine goes down one step to match the current y level
-		firstDotOfCurrentLine = currentDot;
-
-		// Now prevLine also resets to be one level up
-		currentDot_PrevLine = firstDotOfCurrentLine->UP;
-		cout << "Line " << currentyPos << " was made successfully..." << endl;
 	}
-
 	return string();
+}
+
+void Grid::visualize() {
+	Dot *currentDot = Origin;
+	Dot *firstDotOfCurrentLine = Origin;
+	cout << "Line " << Origin->_yPos << endl;
+	while (currentDot != LastDot) {
+		if (currentDot == Origin) {
+			cout << "!";
+		}
+		if (currentDot->LEFT != nullptr) {
+			cout << "<";
+		}
+		if (currentDot->UP != nullptr) {
+			cout << "^";
+		}
+		if (currentDot->DOWN != nullptr) {
+			cout << "V";
+		}
+		if (currentDot->RIGHT != nullptr) {
+			cout << ">";
+		}
+		cout << "(" << currentDot->_xPos << " : " << currentDot->_yPos << ")";
+		cout << " ";		
+
+		if (currentDot->RIGHT == nullptr) {
+			
+			currentDot = firstDotOfCurrentLine;
+			currentDot = currentDot->DOWN;
+			cout << endl;
+			cout << "Line " << currentDot->_yPos << endl;
+
+			if (currentDot->DOWN != nullptr) {
+				currentDot = currentDot->DOWN;
+			}
+			else {
+				cout << endl;
+				cout << "Visulization done!" << endl;
+				break;
+			}
+		}
+		else {
+			currentDot = currentDot->RIGHT;
+		}
+	}
 }

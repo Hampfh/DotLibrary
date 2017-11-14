@@ -22,6 +22,7 @@ public:
 	Grid();
 	~Grid();
 	string setup(int width, int height);
+	void visualize();
 private:
 	Dot *Origin = nullptr;
 	Dot *LastDot = nullptr;
