@@ -28,57 +28,49 @@ string Grid::setup(int width, int height) {
 	// Temporary pointers 
 	Dot *currentDot = Origin;
 	Dot *firstDotOfCurrentLine = Origin;
-	Dot *prevDot = Origin;
+	Dot *prevDot = nullptr;
 	Dot *currentDot_PrevLine = Origin;
 
 	// Grid creation
 	for (int i = 0; i<height; i++) {
 		for (int j = 0; j<width; j++) {
-			if (currentyPos > 0) {
-				cout << ".";
-				currentxPos++;
-				currentDot_PrevLine = currentDot_PrevLine->RIGHT;
-				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
-				prevDot = currentDot;
-				currentDot = currentDot->RIGHT;
-				currentDot->LEFT = prevDot;
+			currentxPos++;
+			currentDot->RIGHT = new Dot(currentxPos, currentyPos);
+			prevDot = currentDot;
+			currentDot = currentDot->RIGHT;
+			currentDot->LEFT = prevDot;
 
-				// Connectiong current Dot with the Dot at the line above
-				//currentDot->UP = currentDot_PrevLine;
-				//currentDot_PrevLine->DOWN = currentDot;
-
-			}
-			// This code only executes the at the first line
-			else {
-				cout << ".";
-				currentxPos++;
-				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
-				prevDot = currentDot;
-				currentDot = currentDot->RIGHT;
-				currentDot->LEFT = prevDot;
-			}
+			// Connectiong current Dot with the Dot at the line above
+			currentDot_PrevLine = currentDot_PrevLine->RIGHT;
+			currentDot->UP = currentDot_PrevLine;
+			currentDot_PrevLine->DOWN = currentDot;
+			cout << ".";
 		}
 		currentxPos = 0;
 		currentyPos++;
 		if (currentyPos == height) {
-			cout << "Line " << currentyPos << " was made successfully..." << endl;
+			cout << "Line " << currentyPos << " was made successfully... --END--" << endl;
 			break;
 		}
 
+		// Reset the currentDot to the beginning of the line
+		currentDot = firstDotOfCurrentLine;
+
+		// CurrentDot creates a Dot underneath itself
 		currentDot->DOWN = new Dot(currentxPos, currentyPos);
 		prevDot = currentDot;
+
+		// CurrentDot now moves down and connects with prevDot
 		currentDot = currentDot->DOWN;
-		currentDot = firstDotOfCurrentLine;
-		currentDot_PrevLine = firstDotOfCurrentLine->UP;
 		currentDot->UP = prevDot;
+
+		// FirstDotOfCurrentLine goes down one step to match the current y level
+		firstDotOfCurrentLine = currentDot;
+
+		// Now prevLine also resets to be one level up
+		currentDot_PrevLine = firstDotOfCurrentLine->UP;
 		cout << "Line " << currentyPos << " was made successfully..." << endl;
 	}
-
-	//delete currentDot;
-	//delete firstDotOfCurrentLine;
-	//delete prevDot;
-	//delete currentDot_PrevLine;
-
 
 	return string();
 }
