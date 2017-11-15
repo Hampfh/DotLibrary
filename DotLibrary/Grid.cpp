@@ -8,8 +8,8 @@ Dot::~Dot() {
 
 }
 
-Grid::Grid(){
-
+Grid::Grid(int width, int height){
+	setup(width, height);
 }
 
 

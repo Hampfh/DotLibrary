@@ -19,10 +19,11 @@ public:
 
 class Grid {
 public:
-	Grid();
+	Grid(int width, int height);
 	~Grid();
-	string setup(int width, int height);
 	void visualize();
+private:
+	string setup(int width, int height);
 private:
 	Dot *Origin = nullptr;
 	Dot *LastDot = nullptr;
