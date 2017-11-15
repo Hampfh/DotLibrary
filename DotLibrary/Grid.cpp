@@ -32,26 +32,35 @@ string Grid::setup(int width, int height) {
 
 	// Grid creation
 	for (int currentyPos = 0; currentyPos < height; currentyPos++) {
-		for (int currentxPos = 0; currentxPos < width; currentxPos++) {
-			currentDot->RIGHT = new Dot(currentxPos, currentyPos);
-			cout << "The new dot had x = " << currentxPos << " and y = " << currentyPos << endl;
-			prevDot = currentDot;
-			currentDot = currentDot->RIGHT;
-			currentDot->LEFT = prevDot;
+		for (int currentxPos = 1; currentxPos < width; currentxPos++) {
+			if (currentyPos > 0) {
+				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
+				cout << "The new dot had x = " << currentxPos << " and y = " << currentyPos << endl;
+				prevDot = currentDot;
+				currentDot = currentDot->RIGHT;
+				currentDot->LEFT = prevDot;
 
-			// Connectiong current Dot with the Dot at the line above
-			currentDot_PrevLine = currentDot_PrevLine->RIGHT;
-			currentDot->UP = currentDot_PrevLine;
-			currentDot_PrevLine->DOWN = currentDot;
+				// Connectiong current Dot with the Dot at the line above
+				currentDot_PrevLine = currentDot_PrevLine->RIGHT;
+				currentDot->UP = currentDot_PrevLine;
+				currentDot_PrevLine->DOWN = currentDot;
+			}
+			else {
+				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
+				cout << "The new dot had x = " << currentxPos << " and y = " << currentyPos << endl;
+				prevDot = currentDot;
+				currentDot = currentDot->RIGHT;
+				currentDot->LEFT = prevDot;
+			}
 		}
 		// Reset x cordinate for next level
-		cout << "CurrentyPos: " << currentyPos << " Height: " << height << endl;
+		cout << "===============" << endl;
 		if (currentyPos < height - 1) {
 			// Reset the currentDot to the beginning of the line
 			currentDot = firstDotOfCurrentLine;
 
 			// CurrentDot creates a Dot underneath itself
-			currentDot->DOWN = new Dot(0, currentyPos);
+			currentDot->DOWN = new Dot(0, currentyPos + 1);
 			prevDot = currentDot;
 
 			// CurrentDot now moves down and connects with prevDot
@@ -100,12 +109,12 @@ void Grid::visualize() {
 		if (currentDot->RIGHT == nullptr) {
 			
 			currentDot = firstDotOfCurrentLine;
-			currentDot = currentDot->DOWN;
 			cout << endl;
-			cout << "Line " << currentDot->_yPos << endl;
 
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
+				firstDotOfCurrentLine = currentDot;
+				cout << "Line " << currentDot->_yPos << endl;
 			}
 			else {
 				cout << endl;
@@ -116,5 +125,43 @@ void Grid::visualize() {
 		else {
 			currentDot = currentDot->RIGHT;
 		}
+	} 
+
+
+	// Code executes for the last node
+	if (currentDot == Origin) {
+		cout << "!";
+	}
+	if (currentDot->LEFT != nullptr) {
+		cout << "<";
+	}
+	if (currentDot->UP != nullptr) {
+		cout << "^";
+	}
+	if (currentDot->DOWN != nullptr) {
+		cout << "V";
+	}
+	if (currentDot->RIGHT != nullptr) {
+		cout << ">";
+	}
+	cout << "(" << currentDot->_xPos << " : " << currentDot->_yPos << ")";
+	cout << " ";
+
+	if (currentDot->RIGHT == nullptr) {
+
+		currentDot = firstDotOfCurrentLine;
+		cout << endl;
+
+		if (currentDot->DOWN != nullptr) {
+			currentDot = currentDot->DOWN;
+			firstDotOfCurrentLine = currentDot;
+		}
+		else {
+			cout << endl;
+			cout << "Visulization done!" << endl;
+		}
+	}
+	else {
+		currentDot = currentDot->RIGHT;
 	}
 }
