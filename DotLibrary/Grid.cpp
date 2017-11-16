@@ -83,6 +83,11 @@ string Grid::setup(int width, int height) {
 	return string();
 }
 
+void Grid::SetupWindow(string title, int screenWidth, int screenHeight) {
+	mainWindow = new Window("Jellyjump", screenWidth, screenHeight);
+}
+
+
 void Grid::visualize() {
 	Dot *currentDot = Origin;
 	Dot *firstDotOfCurrentLine = Origin;
