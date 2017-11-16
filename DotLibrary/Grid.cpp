@@ -19,6 +19,8 @@ Grid::~Grid(){
 
 // Code underneath creates the grid with all nodes and their coordinates
 string Grid::setup(int width, int height) {
+	gridWidth = width;
+	gridHeight = height;
 	// Initializing variables
 		
 	Origin = new Dot(0, 0);
@@ -169,4 +171,8 @@ void Grid::visualize() {
 	else {
 		currentDot = currentDot->RIGHT;
 	}
+}
+
+void Grid::screenUpdate() {
+	Dot *currentDot = Origin;
 }
