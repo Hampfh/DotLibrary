@@ -3,13 +3,20 @@
 #include "rect.h"
 using namespace std;
 
-class dot {
+class Dot {
 public:
-	dot(const string &image_path);
-	~dot();
+	Dot(int xPos, int yPos);
+	~Dot();
 private:
 	void callDrawMethod();
-private:
-	Rect *graphicalDot;
+public:
+	int _xPos;
+	int _yPos;
+
+	Dot *UP = nullptr;
+	Dot *DOWN = nullptr;
+	Dot *RIGHT = nullptr;
+	Dot *LEFT = nullptr;
+	Rect *rect = nullptr;
 };
 
