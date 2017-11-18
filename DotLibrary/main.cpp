@@ -1,5 +1,4 @@
 #include "window.h"
-#include "rect.h"
 #include "text.h"
 #include "Grid.h"
 
@@ -12,7 +11,7 @@ int main(int argc, char** argv) {
 	Grid grid(3,3);
 	grid.SetupWindow("Test window", 1000, 750);
 	while (true) {
-
+		grid.mainWindow->clear();
 	}
 
 	return 0;

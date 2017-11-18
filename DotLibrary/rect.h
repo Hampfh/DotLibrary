@@ -1,14 +1,15 @@
 #pragma once
-
-#include "window.h"
+#include "Window.h"
 
 class Rect {
 public:
-	Rect(const std::string &image_path);
-	~Rect();
-	void draw(int w, int h, int x, int y) const; // Draws the rect to screen
+	Rect(int w, int h, int x, int y, int r, int g, int b, int a);
+	void draw() const;
 private:
-	int _w, _h; // rect size
-	float _r, _g, _b, _a; // rect color
-	SDL_Texture *texture = nullptr; // holds a picture
+	int _w, _h;
+	int _x, _y;
+	int _r, _g, _b, _a;
+	~Rect();
+
 };
+

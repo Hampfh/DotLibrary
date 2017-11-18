@@ -1,13 +1,5 @@
 #include "Grid.h"
 
-Dot::Dot(int xPos, int yPos) : _xPos(xPos), _yPos(yPos) {
-
-}
-
-Dot::~Dot() {
-
-}
-
 Grid::Grid(int width, int height){
 	setup(width, height);
 }
@@ -169,4 +161,8 @@ void Grid::visualize() {
 	else {
 		currentDot = currentDot->RIGHT;
 	}
+}
+
+void Grid::drawGrid() {
+
 }

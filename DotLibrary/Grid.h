@@ -2,22 +2,9 @@
 #include <string>
 #include <iostream>
 #include "Window.h"
+#include "Dot.h"
 
 using namespace std;
-
-class Dot {
-public:
-	Dot(int xPos, int yPos);
-	~Dot();
-public:
-	int _xPos;
-	int _yPos;
-	string representativeColor;
-	Dot *UP = nullptr;
-	Dot *DOWN = nullptr;
-	Dot *RIGHT = nullptr;
-	Dot *LEFT = nullptr;
-};
 
 class Grid {
 public:
@@ -25,10 +12,13 @@ public:
 	~Grid();
 	void visualize();
 	void Grid::SetupWindow(string title, int screenWidth, int screenHeight); 
+	void drawGrid();
+	Dot *specifyDot(int xCord, int yCord);
 private:
 	string setup(int width, int height);
-private:
+public:
 	Window *mainWindow = nullptr;
+private:
 	Dot *Origin = nullptr;
 	Dot *LastDot = nullptr;
 };
