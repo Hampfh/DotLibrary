@@ -1,6 +1,6 @@
 #include "text.h"
 #include <iostream>
-#include "Window.h"
+#include "window.h"
 
 Text::Text() {
 	
