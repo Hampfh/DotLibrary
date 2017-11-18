@@ -10,6 +10,7 @@ int main(int argc, char** argv) {
 
 	Grid grid(3,3);
 	grid.SetupWindow("Test window", 1000, 750);
+	grid.visualize();
 	while (true) {
 		grid.mainWindow->clear();
 	}
