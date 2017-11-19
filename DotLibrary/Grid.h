@@ -26,8 +26,8 @@ public:
 		} origo;
 		struct colorForEachDot {
 			int r;
-			int g;
-			int b;
+			int g = 50;
+			int b = 150;
 			int a;
 		} color;
 		int betweenDotDistance = 10;

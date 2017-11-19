@@ -9,7 +9,7 @@ Grid::~Grid(){
 
 }
 
-// Code underneath creates the grid with all nodes and their coordinates
+// Code underneath creates the grid with all dots and their coordinates
 string Grid::setup(int width, int height) {
 	// Initializing variables
 		
@@ -79,7 +79,7 @@ string Grid::setup(int width, int height) {
 }
 
 void Grid::SetupWindow(string title, int screenWidth, int screenHeight) {
-	mainWindow = new Window("Jellyjump", screenWidth, screenHeight);
+	mainWindow = new Window(title, screenWidth, screenHeight);
 }
 
 
@@ -135,11 +135,19 @@ void Grid::drawGrid() {
 	int current_xPos = GridSpecifications.origo.x;
 	int current_yPos = GridSpecifications.origo.y;
 	
-	Origo->position.x = GridSpecifications.origo.x;
-	Origo->position.y = GridSpecifications.origo.y;
+	Origo->position.x = current_xPos;
+	Origo->position.y = current_yPos;
+	Origo->size.w = GridSpecifications.dotSize;
+	Origo->size.h = GridSpecifications.dotSize;
+	Origo->color.r = GridSpecifications.color.r;
+	Origo->color.g = 100;
+	Origo->color.b = 100;
+	Origo->color.a = GridSpecifications.color.a;
 	Origo->callDrawMethod();
 
 	current_xPos = current_xPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
+
+	currentDot = currentDot->RIGHT;
 
 	while (currentDot != LastDot) {
 		// Specifing properties for each dot
@@ -152,17 +160,21 @@ void Grid::drawGrid() {
 		currentDot->color.b = GridSpecifications.color.b;
 		currentDot->color.a = GridSpecifications.color.a;
 		
+		current_xPos = current_xPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
+
 		// Drawing the current dot to the screen
 		currentDot->callDrawMethod();
 
 		if (currentDot->RIGHT == nullptr) {
+			cout << "Dot cords: x=" << currentDot->xGridPosition << " y=" << currentDot->yGridPosition << endl;;
 
 			currentDot = firstDotOfCurrentLine;
-			cout << endl;
 
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
 				firstDotOfCurrentLine = currentDot;
+				current_xPos = GridSpecifications.origo.x;
+				current_yPos = current_yPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
 			}
 			else {
 				cout << "The requested dot was not found" << endl;
