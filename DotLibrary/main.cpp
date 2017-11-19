@@ -36,10 +36,9 @@ int main(int argc, char** argv) {
 		ThisDot->color.g = 255;
 		ThisDot->color.r = 255;
 		ThisDot->callDrawMethod();
-		grid.mainWindow->clear(&grid.GridSpecifications.backGroundColor);
+		grid.mainWindow->clear();
 
 		if (grid.mainWindow->isClosed()) {
-			SDL_Quit;
 			break;
 		}
 	}

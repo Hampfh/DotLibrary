@@ -76,11 +76,11 @@ void Window::pollEvent(SDL_Event &evnt) {
 }
 
 // Clear render the screen with all it's content
-void Window::clear() const {
+void Window::clear(int r, int g, int b, int a) const {
 	// RenderPreset is the final rendering command that renders to screen
 	SDL_RenderPresent(renderer);
 	// Set background color
-	SDL_SetRenderDrawColor(renderer, 8, 103, 176, 255);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	// Clears the screen
 	SDL_RenderClear(renderer);
 	
