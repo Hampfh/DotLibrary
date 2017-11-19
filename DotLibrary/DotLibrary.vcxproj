@@ -130,7 +130,6 @@
     <ClInclude Include="Dot.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="rect.h" />
-    <ClInclude Include="text.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +137,6 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rect.cpp" />
-    <ClCompile Include="text.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
