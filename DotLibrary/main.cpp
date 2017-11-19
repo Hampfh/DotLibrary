@@ -1,6 +1,6 @@
 #include "window.h"
-#include "text.h"
 #include "Grid.h"
+#include "Dot.h"
 
 // Version 1.5
 
@@ -11,6 +11,8 @@ int main(int argc, char** argv) {
 	Grid grid(3,3);
 	grid.SetupWindow("Test window", 1000, 750);
 	grid.visualize();
+	Dot* ThisDot = grid.specifyDot(1,1);
+
 	while (true) {
 		grid.mainWindow->clear();
 	}

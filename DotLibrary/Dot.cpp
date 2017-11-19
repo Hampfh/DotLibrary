@@ -1,9 +1,9 @@
 #include "dot.h"
 
 Dot::Dot(int xPos, int yPos) :
-	_xPos(xPos), _yPos(yPos)
+xGridPosition(xPos), yGridPosition(yPos)
 {
-	rect = new Rect(20, 20, 20, 20, 255, 255, 255, 255);
+	thisDot = new Rect();
 }
 
 
@@ -12,5 +12,5 @@ Dot::~Dot(){
 }
 
 void Dot::callDrawMethod() {
-
+	thisDot->draw(size.w, size.h, position.x, position.y, color.r, color.g, color.b, color.a);
 }

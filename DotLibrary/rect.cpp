@@ -1,8 +1,6 @@
 #include "rect.h"
 
-Rect::Rect(int w, int h, int x, int y, int r, int g, int b, int a) :
-_w(w), _h(h), _x(x), _y(y), _r(r), _g(g), _b(b), _a(a)
-{
+Rect::Rect() {
 
 }
 
@@ -10,13 +8,13 @@ Rect::~Rect()
 {
 }
 
-void Rect::draw() const {
+void Rect::draw(int w, int h, int x, int y, int r, int g, int b, int a) const {
 	SDL_Rect rect;
-	rect.w = _w;
-	rect.h = _h;
-	rect.x = _x;
-	rect.y = _y;
+	rect.w = w;
+	rect.h = h;
+	rect.x = x;
+	rect.y = y;
 
-	SDL_SetRenderDrawColor(Window::renderer, _r, _g, _b, _a);
+	SDL_SetRenderDrawColor(Window::renderer, r, g, b, a);
 	SDL_RenderFillRect(Window::renderer, &rect);
 }

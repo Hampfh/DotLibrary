@@ -12,14 +12,30 @@ public:
 	~Grid();
 	void visualize();
 	void Grid::SetupWindow(string title, int screenWidth, int screenHeight); 
-	void drawGrid();
-	Dot *specifyDot(int xCord, int yCord);
+	void drawGrid(); // <-- under constructction
+	Dot *specifyDot(int xCord, int yCord); // <--- under construction
 private:
 	string setup(int width, int height);
 public:
 	Window *mainWindow = nullptr;
+	
+	struct GridSpecifiers {
+		struct coordinate {
+			int x = 20;
+			int y = 20;
+		} origo;
+		struct colorForEachDot {
+			int r;
+			int g;
+			int b;
+			int a;
+		} color;
+		int betweenDotDistance = 10;
+		int dotSize = 20;
+	} GridSpecifications;
+
 private:
-	Dot *Origin = nullptr;
+	Dot *Origo = nullptr;
 	Dot *LastDot = nullptr;
 };
 

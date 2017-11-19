@@ -13,18 +13,19 @@ Grid::~Grid(){
 string Grid::setup(int width, int height) {
 	// Initializing variables
 		
-	Origin = new Dot(0, 0);
+	Origo = new Dot(0, 0);
 	LastDot = nullptr;
 
 	// Temporary pointers 
-	Dot *currentDot = Origin;
-	Dot *firstDotOfCurrentLine = Origin;
+	Dot *currentDot = Origo;
+	Dot *firstDotOfCurrentLine = Origo;
 	Dot *prevDot = nullptr;
-	Dot *currentDot_PrevLine = Origin;
+	Dot *currentDot_PrevLine = Origo;
 
 	// Grid creation
 	for (int currentyPos = 0; currentyPos < height; currentyPos++) {
 		for (int currentxPos = 1; currentxPos < width; currentxPos++) {
+			// All lines but the first is executed bellow
 			if (currentyPos > 0) {
 				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
 				cout << "The new dot had x = " << currentxPos << " and y = " << currentyPos << endl;
@@ -37,6 +38,7 @@ string Grid::setup(int width, int height) {
 				currentDot->UP = currentDot_PrevLine;
 				currentDot_PrevLine->DOWN = currentDot;
 			}
+			// First line i executed here
 			else {
 				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
 				cout << "The new dot had x = " << currentxPos << " and y = " << currentyPos << endl;
@@ -69,7 +71,8 @@ string Grid::setup(int width, int height) {
 		}
 		else {
 			cout << "Line " << currentyPos << " was made successfully... --END--" << endl;
-			LastDot = currentDot;
+			currentDot->RIGHT = new Dot(currentDot->xGridPosition+1, currentyPos);
+			LastDot = currentDot->RIGHT;
 		}
 	}
 	return string();
@@ -81,11 +84,11 @@ void Grid::SetupWindow(string title, int screenWidth, int screenHeight) {
 
 
 void Grid::visualize() {
-	Dot *currentDot = Origin;
-	Dot *firstDotOfCurrentLine = Origin;
-	cout << "Line " << Origin->_yPos << endl;
+	Dot *currentDot = Origo;
+	Dot *firstDotOfCurrentLine = Origo;
+	cout << "Line " << Origo->yGridPosition << endl;
 	while (currentDot != LastDot) {
-		if (currentDot == Origin) {
+		if (currentDot == Origo) {
 			cout << "!";
 		}
 		if (currentDot->LEFT != nullptr) {
@@ -100,7 +103,7 @@ void Grid::visualize() {
 		if (currentDot->RIGHT != nullptr) {
 			cout << ">";
 		}
-		cout << "(" << currentDot->_xPos << " : " << currentDot->_yPos << ")";
+		cout << "(" << currentDot->xGridPosition << " : " << currentDot->yGridPosition << ")";
 		cout << " ";		
 
 		if (currentDot->RIGHT == nullptr) {
@@ -111,7 +114,7 @@ void Grid::visualize() {
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
 				firstDotOfCurrentLine = currentDot;
-				cout << "Line " << currentDot->_yPos << endl;
+				cout << "Line " << currentDot->yGridPosition << endl;
 			}
 			else {
 				cout << endl;
@@ -123,46 +126,81 @@ void Grid::visualize() {
 			currentDot = currentDot->RIGHT;
 		}
 	} 
-
-
-	// Code executes for the last node
-	if (currentDot == Origin) {
-		cout << "!";
-	}
-	if (currentDot->LEFT != nullptr) {
-		cout << "<";
-	}
-	if (currentDot->UP != nullptr) {
-		cout << "^";
-	}
-	if (currentDot->DOWN != nullptr) {
-		cout << "V";
-	}
-	if (currentDot->RIGHT != nullptr) {
-		cout << ">";
-	}
-	cout << "(" << currentDot->_xPos << " : " << currentDot->_yPos << ")";
-	cout << " ";
-
-	if (currentDot->RIGHT == nullptr) {
-
-		currentDot = firstDotOfCurrentLine;
-		cout << endl;
-
-		if (currentDot->DOWN != nullptr) {
-			currentDot = currentDot->DOWN;
-			firstDotOfCurrentLine = currentDot;
-		}
-		else {
-			cout << endl;
-			cout << "Visulization done!" << endl;
-		}
-	}
-	else {
-		currentDot = currentDot->RIGHT;
-	}
 }
 
 void Grid::drawGrid() {
+	Dot *currentDot = Origo;
+	Dot *firstDotOfCurrentLine = Origo;
 
+	int current_xPos = GridSpecifications.origo.x;
+	int current_yPos = GridSpecifications.origo.y;
+	
+	Origo->position.x = GridSpecifications.origo.x;
+	Origo->position.y = GridSpecifications.origo.y;
+	Origo->callDrawMethod();
+
+	current_xPos = current_xPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
+
+	while (currentDot != LastDot) {
+		// Specifing properties for each dot
+		currentDot->position.x = current_xPos;
+		currentDot->position.y = current_yPos;
+		currentDot->size.w = GridSpecifications.dotSize;
+		currentDot->size.h = GridSpecifications.dotSize;
+		currentDot->color.r = GridSpecifications.color.r;
+		currentDot->color.g = GridSpecifications.color.g;
+		currentDot->color.b = GridSpecifications.color.b;
+		currentDot->color.a = GridSpecifications.color.a;
+		
+		// Drawing the current dot to the screen
+		currentDot->callDrawMethod();
+
+		if (currentDot->RIGHT == nullptr) {
+
+			currentDot = firstDotOfCurrentLine;
+			cout << endl;
+
+			if (currentDot->DOWN != nullptr) {
+				currentDot = currentDot->DOWN;
+				firstDotOfCurrentLine = currentDot;
+			}
+			else {
+				cout << "The requested dot was not found" << endl;
+				break;
+			}
+		}
+		else {
+			currentDot = currentDot->RIGHT;
+		}
+	}
+}
+
+Dot* Grid::specifyDot(int xCord, int yCord) {
+	Dot *currentDot = Origo;
+	Dot *firstDotOfCurrentLine = Origo;
+
+	while (currentDot != LastDot) {
+		if (currentDot->xGridPosition == xCord && currentDot->yGridPosition == yCord) {
+			return currentDot;
+		}
+
+		if (currentDot->RIGHT == nullptr) {
+
+			currentDot = firstDotOfCurrentLine;
+			cout << endl;
+
+			if (currentDot->DOWN != nullptr) {
+				currentDot = currentDot->DOWN;
+				firstDotOfCurrentLine = currentDot;
+			}
+			else {
+				cout << "The requested dot was not found" << endl;
+				break;
+			}
+		}
+		else {
+			currentDot = currentDot->RIGHT;
+		}
+	}
+	return nullptr;
 }
