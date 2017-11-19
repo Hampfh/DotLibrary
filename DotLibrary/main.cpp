@@ -1,6 +1,7 @@
 #include "window.h"
 #include "Grid.h"
 #include "Dot.h"
+#include <Windows.h>
 
 void pollEvents(Window &window) {
 	SDL_Event evnt;
@@ -11,6 +12,9 @@ void pollEvents(Window &window) {
 }
 
 int main(int argc, char** argv) {
+
+	HWND hWnd = GetConsoleWindow();
+	ShowWindow(hWnd, SW_HIDE);
 
 	Grid grid(4,4);
 	grid.SetupWindow("Test window", 1000, 750);
