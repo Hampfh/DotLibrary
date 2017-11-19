@@ -13,7 +13,7 @@ void pollEvents(Window &window) {
 
 int main(int argc, char** argv) {
 
-	FreeConsole();
+	//FreeConsole();
 
 	Grid grid(4,4);
 	grid.SetupWindow("Test window", 1000, 750);
@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 	grid.GridSpecifications.dotSize = 30;
 	grid.drawGrid();
 
-	Dot* ThisDot = grid.specifyDot(2,3);
+	Dot* ThisDot = grid.specifyDot(2,5);
 	ThisDot->color.g = 255;
 	ThisDot->color.r = 255;
 	ThisDot->callDrawMethod();

@@ -1,6 +1,8 @@
 #include "Grid.h"
 
-Grid::Grid(int width, int height){
+Grid::Grid(int width, int height) :
+	_gridLengthInDots(width), _gridHeightInDots(height)
+{
 	setup(width, height);
 }
 
@@ -28,7 +30,6 @@ string Grid::setup(int width, int height) {
 			// All lines but the first is executed bellow
 			if (currentyPos > 0) {
 				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
-				cout << "The new dot had x = " << currentxPos << " and y = " << currentyPos << endl;
 				prevDot = currentDot;
 				currentDot = currentDot->RIGHT;
 				currentDot->LEFT = prevDot;
@@ -41,14 +42,12 @@ string Grid::setup(int width, int height) {
 			// First line i executed here
 			else {
 				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
-				cout << "The new dot had x = " << currentxPos << " and y = " << currentyPos << endl;
 				prevDot = currentDot;
 				currentDot = currentDot->RIGHT;
 				currentDot->LEFT = prevDot;
 			}
 		}
 		// Reset x cordinate for next level
-		cout << "===============" << endl;
 		if (currentyPos < height - 1) {
 			// Reset the currentDot to the beginning of the line
 			currentDot = firstDotOfCurrentLine;
@@ -66,11 +65,9 @@ string Grid::setup(int width, int height) {
 
 			// Now prevLine also resets to be one level up
 			currentDot_PrevLine = firstDotOfCurrentLine->UP;
-			cout << "Line " << currentyPos << " was made successfully..." << endl;
 
 		}
 		else {
-			cout << "Line " << currentyPos << " was made successfully... --END--" << endl;
 			currentDot->RIGHT = new Dot(currentDot->xGridPosition+1, currentyPos);
 			LastDot = currentDot->RIGHT;
 		}
@@ -166,7 +163,6 @@ void Grid::drawGrid() {
 		currentDot->callDrawMethod();
 
 		if (currentDot->RIGHT == nullptr) {
-			cout << "Dot cords: x=" << currentDot->xGridPosition << " y=" << currentDot->yGridPosition << endl;;
 
 			currentDot = firstDotOfCurrentLine;
 
@@ -177,7 +173,7 @@ void Grid::drawGrid() {
 				current_yPos = current_yPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
 			}
 			else {
-				cout << "The requested dot was not found" << endl;
+				cerr << "The requested dot was not found" << endl;
 				break;
 			}
 		}
@@ -191,28 +187,33 @@ Dot* Grid::specifyDot(int xCord, int yCord) {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
 
-	while (currentDot != LastDot) {
-		if (currentDot->xGridPosition == xCord && currentDot->yGridPosition == yCord) {
-			return currentDot;
-		}
+	if (xCord >= 0 && xCord < _gridLengthInDots && yCord >= 0 && yCord < _gridHeightInDots) {
+		while (currentDot != LastDot) {
+			if (currentDot->xGridPosition == xCord && currentDot->yGridPosition == yCord) {
+				return currentDot;
+			}
 
-		if (currentDot->RIGHT == nullptr) {
+			if (currentDot->RIGHT == nullptr) {
 
-			currentDot = firstDotOfCurrentLine;
-			cout << endl;
+				currentDot = firstDotOfCurrentLine;
 
-			if (currentDot->DOWN != nullptr) {
-				currentDot = currentDot->DOWN;
-				firstDotOfCurrentLine = currentDot;
+				if (currentDot->DOWN != nullptr) {
+					currentDot = currentDot->DOWN;
+					firstDotOfCurrentLine = currentDot;
+				}
+				else {
+					cerr << "The requested dot was not found" << endl;
+					break;
+				}
 			}
 			else {
-				cout << "The requested dot was not found" << endl;
-				break;
+				currentDot = currentDot->RIGHT;
 			}
 		}
-		else {
-			currentDot = currentDot->RIGHT;
-		}
+		return nullptr;
 	}
-	return nullptr;
+	else {
+		cerr << "The dot specified is not in range and therefor Origo is returned as a dot";
+		return Origo;
+	}
 }

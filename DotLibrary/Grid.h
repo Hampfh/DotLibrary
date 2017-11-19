@@ -18,7 +18,7 @@ private:
 	string setup(int width, int height);
 public:
 	Window *mainWindow = nullptr;
-	
+
 	struct GridSpecifiers {
 		struct coordinate {
 			int x = 20;
@@ -35,6 +35,9 @@ public:
 	} GridSpecifications;
 
 private:
+	int _gridLengthInDots;
+	int _gridHeightInDots;
+
 	Dot *Origo = nullptr;
 	Dot *LastDot = nullptr;
 };
