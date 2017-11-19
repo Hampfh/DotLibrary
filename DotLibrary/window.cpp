@@ -20,8 +20,7 @@ Window::~Window() {
 }
 
 bool Window::init() {
-	// Hides CMD from the user when starting the program (using Windows.h)
-	//FreeConsole();
+
 	// Setup SDL Video (screen)
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		std::cerr << "Failed to initalize SDL.h\n";
