@@ -5,7 +5,7 @@ Dependencies:
 SDL2 library
 Visual Studio
 
-##SDL2 Installation:
+## SDL2 Installation:
 #### Download Package
 1. Download the library via SDL's own website:
 https://www.libsdl.org/download-2.0.php
