@@ -22,6 +22,10 @@ Create a new folder inside "deps" called "lib" and drag all [.lib] files to that
 Notice that there [.dll] file left. Drag this one to your output file, if you don't have one, run your code once and it will be automatically created.
 
 #### Link library
-Open visual studio and open your project. Navigate to **Project->Properties**. Click **VC++ Directories**. Open **Include libraries** and add __$(SolutionDir)**deps**/include/__. Remember to change "deps" to your name if you named it something else.
+1. Open your project in visual studio. 
+2. Navigate to **Project->Properties**. 
+3. Click **VC++ Directories**. 
+4. Open **Include libraries** and add __$(SolutionDir)**deps**/include/__. 
+..* Remember to change "deps" to your name if you named it something else.
 
 ## DotLibrary Installation:
