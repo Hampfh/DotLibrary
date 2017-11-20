@@ -15,7 +15,7 @@ Scroll down to "Development Libraries" and choose:
 #### 2. Create folders
 1. Now go into your solution directory (where your [.sln] file is).
 Create a folder in the directory, the name of the folder is optional but we call it **"deps"**. 
-* _**Note:** If your folder name is something else then remember to stick with that. Change every **deps** to whatever you've called your file._
+   * _**Note:** If your folder name is something else then remember to stick with that. Change every **deps** to whatever you've called your file._
 
 2. Extract your downloaded SDL2 package.
 3. Navigate inside the SDL2 package to the _"include"_ folder and drag folder (with it's content) inside **deps**.
@@ -30,7 +30,7 @@ Create a new folder inside **"deps"** called **lib** and drag all [.lib] files t
 4. Open **Include libraries** and add [_$(SolutionDir)**deps**/include/_] in the upper bar. 
 5. Do exactly the same thing for **Library Directories** but instead insert [_$(SolutionDir)**deps**/lib/_]
 6. Now locate **Linker->Input** and open **Additional Dependencies**. Now paste **SDL2.lib** click enter and paste **SDL2main.lib**.
-* **Note:** Don't forget to click **OK** when you leave this window.
+   * **Note:** Don't forget to click **OK** when you leave this window.
 7. Lastly locate to **Linker->System** open **SubSystem** and choose **Console (/SUBSYSTEM:CONSOLE)**.
 
 ## DotLibrary Installation:
