@@ -18,7 +18,7 @@ The name of the folder is optional but here it's called **"deps"**.
 * _**Note:** If your folder name is something else then remember to stick with that. Change **deps** to whatever you've called your file._
 
 2. Extract your downloaded SDL2 package.
-3. Navigate inside the SDL2 package to the "include" folder and drag it inside "deps".
+3. Navigate inside the SDL2 package to the _"include"_ folder and drag it inside **deps**.
 4. Open the "lib" file in the package, depending on your system chose either 64bit(x64) or 32bit(x86).
 Create a new folder inside **"deps"** called **"lib"** and drag all [.lib] files to that position.
 5. Notice that the [.dll] file left. Drag this one to your output file, if you don't have one, run your code once and it will be automatically created.
