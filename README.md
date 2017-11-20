@@ -14,7 +14,7 @@ Scroll down to "Development Libraries" and choose:
 
 #### Create folders
 2. Now go into your project folder. At the same place where your [.sln] is create a new directory.
-The name of the folder is optional but here it's called "deps" for short.
+The name of the folder is optional but here it's called **deps**. _**Note:** if you name your folder something else remember to stick with that. Change **deps** to whatever you've called your file._
 Extract your downloaded SDL2 package.
 Navigate inside the SDL2 package to the "include" folder and drag it inside "deps".
 Open the "lib" file in the package, depending on your system chose either 64bit(x64) or 32bit(x86).
@@ -25,6 +25,7 @@ Notice that there [.dll] file left. Drag this one to your output file, if you do
 1. Open your project in visual studio. 
 2. Navigate to **Project->Properties**. 
 3. Click **VC++ Directories**. 
-4. Open **Include libraries** and add __$(SolutionDir)**deps**/include/__ in the upper bar. Remember to change "deps" to your name if you named it something else.
+4. Open **Include libraries** and add _$(SolutionDir)**deps**/include/_ in the upper bar. 
+5. Do exactly the same thing for **Library Directories** but instead insert _$(SolutionDir)**deps**/lib/_
 
 ## DotLibrary Installation:
