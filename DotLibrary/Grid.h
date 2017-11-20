@@ -25,10 +25,10 @@ public:
 			int y = 20;
 		} gridOffset;
 		struct colorForEachDot {
-			int r;
-			int g = 50;
-			int b = 150;
-			int a;
+			int r = 255;
+			int g = 255;
+			int b = 255;
+			int a = 255;
 		} color;
 		int betweenDotDistance = 10;
 		int dotSize = 20;
