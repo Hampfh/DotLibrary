@@ -28,6 +28,5 @@ Create a new folder inside **"deps"** called **"lib"** and drag all [.lib] files
 3. Click **VC++ Directories**. 
 4. Open **Include libraries** and add _$(SolutionDir)**deps**/include/_ in the upper bar. 
 5. Do exactly the same thing for **Library Directories** but instead insert _$(SolutionDir)**deps**/lib/_
-6. Now locate to **Linker->Input** and open **Additional Dependencies**. 
-⋅⋅⋅Hello
+6. Now locate to **Linker->Input** and open **Additional Dependencies**. Now paste **SDL2.lib** click enter and paste **SDL2main.lib**.
 ## DotLibrary Installation:
