@@ -29,4 +29,6 @@ Create a new folder inside **"deps"** called **"lib"** and drag all [.lib] files
 4. Open **Include libraries** and add _$(SolutionDir)**deps**/include/_ in the upper bar. 
 5. Do exactly the same thing for **Library Directories** but instead insert _$(SolutionDir)**deps**/lib/_
 6. Now locate to **Linker->Input** and open **Additional Dependencies**. Now paste **SDL2.lib** click enter and paste **SDL2main.lib**.
+7. Lastly locate to **Linker->System** open **SubSystem** and choose **CONSOLE**.
+
 ## DotLibrary Installation:
