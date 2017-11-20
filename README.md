@@ -15,7 +15,7 @@ Scroll down to "Development Libraries" and choose:
 #### 2. Create folders
 1. Now go into your project folder. At the same place where your [.sln] is create a new directory.
 The name of the folder is optional but here it's called **"deps"**. 
-* _**Note:** If you name your folder something else remember to stick with that. Change **deps** to whatever you've called your file._
+* _**Note:** If your folder name is something else then remember to stick with that. Change **deps** to whatever you've called your file._
 
 2. Extract your downloaded SDL2 package.
 3. Navigate inside the SDL2 package to the "include" folder and drag it inside "deps".
