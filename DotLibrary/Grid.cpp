@@ -129,16 +129,16 @@ void Grid::drawGrid() {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
 
-	int current_xPos = GridSpecifications.origo.x;
-	int current_yPos = GridSpecifications.origo.y;
+	int current_xPos = GridSpecifications.gridOffset.x;
+	int current_yPos = GridSpecifications.gridOffset.y;
 	
 	Origo->position.x = current_xPos;
 	Origo->position.y = current_yPos;
 	Origo->size.w = GridSpecifications.dotSize;
 	Origo->size.h = GridSpecifications.dotSize;
 	Origo->color.r = GridSpecifications.color.r;
-	Origo->color.g = 100;
-	Origo->color.b = 100;
+	Origo->color.g = GridSpecifications.color.g;
+	Origo->color.b = GridSpecifications.color.b;
 	Origo->color.a = GridSpecifications.color.a;
 	Origo->callDrawMethod();
 
@@ -169,7 +169,7 @@ void Grid::drawGrid() {
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
 				firstDotOfCurrentLine = currentDot;
-				current_xPos = GridSpecifications.origo.x;
+				current_xPos = GridSpecifications.gridOffset.x;
 				current_yPos = current_yPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
 			}
 			else {

@@ -18,8 +18,10 @@ int main(int argc, char** argv) {
 	Grid grid(4,4);
 	grid.SetupWindow("Test window", 1000, 750);
 
-	grid.GridSpecifications.betweenDotDistance = 2;
+	grid.GridSpecifications.betweenDotDistance = 1;
 	grid.GridSpecifications.dotSize = 30;
+	grid.GridSpecifications.gridOffset.x = 50;
+	grid.GridSpecifications.gridOffset.y = 50;
 	grid.drawGrid();
 
 	Dot* ThisDot = grid.specifyDot(2,5);

@@ -23,7 +23,7 @@ public:
 		struct coordinate {
 			int x = 20;
 			int y = 20;
-		} origo;
+		} gridOffset;
 		struct colorForEachDot {
 			int r;
 			int g = 50;
