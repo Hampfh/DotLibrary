@@ -23,18 +23,12 @@ int main(int argc, char** argv) {
 	grid.GridSpecifications.gridOffset.x = 50;
 	grid.GridSpecifications.gridOffset.y = 50;
 	grid.drawGrid();
-
-	Dot* ThisDot = grid.specifyDot(2,5);
-	ThisDot->color.g = 255;
-	ThisDot->color.r = 255;
-	ThisDot->callDrawMethod();
-	grid.mainWindow->clear();
 	
 	while (true) {
 		pollEvents(*grid.mainWindow);
 
 		grid.drawGrid();
-		Dot* ThisDot = grid.specifyDot(2, 3);
+		Dot* ThisDot = grid.specifyDot(2, 1);
 		ThisDot->color.g = 255;
 		ThisDot->color.r = 255;
 		ThisDot->callDrawMethod();

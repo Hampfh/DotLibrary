@@ -14,8 +14,6 @@ _title(title), _width(width), _height(height)
 Window::~Window() {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(_window);
-	TTF_Quit();
-	IMG_Quit();
 	SDL_Quit();
 }
 
@@ -27,16 +25,6 @@ bool Window::init() {
 		return false;
 	}
 
-	// Setup image handling
-	if (IMG_Init(IMG_INIT_PNG) != 2) {
-		std::cerr << "Failed to initialize SDL_image.\n";
-		return false;
-	}
-	// Setup text handling
-	if (TTF_Init() == -1) {
-		std::cerr << "Failed to initialize SDL_ttf.\n";
-		return false;
-	}
 	// Create the window
 	_window = SDL_CreateWindow(_title.c_str(), 
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
