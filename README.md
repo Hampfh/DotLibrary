@@ -1,7 +1,7 @@
 # DotLibrary
 A simple visualization library
 
-Dependencies:
+**Dependencies:**
 SDL2 library
 Visual Studio
 
