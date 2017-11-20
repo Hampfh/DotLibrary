@@ -27,7 +27,7 @@ Create a new folder inside **"deps"** called **"lib"** and drag all [.lib] files
 1. Open your project in visual studio. 
 2. Navigate to **Project->Properties**. 
 3. Click **VC++ Directories**. 
-4. Open **Include libraries** and add [$(SolutionDir)**deps**/include/_] in the upper bar. 
+4. Open **Include libraries** and add [_$(SolutionDir)**deps**/include/_] in the upper bar. 
 5. Do exactly the same thing for **Library Directories** but instead insert [_$(SolutionDir)**deps**/lib/_]
 6. Now locate to **Linker->Input** and open **Additional Dependencies**. Now paste **SDL2.lib** click enter and paste **SDL2main.lib**.
 7. Lastly locate to **Linker->System** open **SubSystem** and choose **CONSOLE**.
