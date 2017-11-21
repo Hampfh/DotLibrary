@@ -39,4 +39,11 @@ Create a new folder inside **"deps"** called **lib** and drag all [.lib] files t
   2. Download the latest version of _DotLibrary.zip_
 
 #### 2. Add library
-  1. In your solution directory locate **deps->include**
+  1. Locate **DotLibrary->include** and drag all it's content inside **deps->include**
+  2. Locate **DotLibrary->lib** and drag the it's content inside **deps->lib**
+
+#### 3. Link library
+  1. Open your project in visual studio. 
+  2. Navigate to **Project->Properties**. 
+  3. Now locate **Linker->Input** and open **Additional Dependencies**. On a new line add **DotLibrary.lib**.
+     * **Note:** Don't forget to click **OK** when you leave this window.
