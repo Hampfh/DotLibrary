@@ -34,3 +34,9 @@ Create a new folder inside **"deps"** called **lib** and drag all [.lib] files t
   7. Lastly locate **Linker->System** open **SubSystem** and choose **Console (/SUBSYSTEM:CONSOLE)**.
 
 ## DotLibrary Installation:
+#### 1. Download Package
+  1. Find the DotLibrary download via github on the link bellow: https://github.com/Hampfh/DotLibrary/releases
+  2. Download the latest version of _DotLibrary.zip_
+
+#### 2. Add library
+  1. In your solution directory locate **deps->include**
