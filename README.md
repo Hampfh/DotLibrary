@@ -1,6 +1,8 @@
 # DotLibrary
 A simple visualization library
 
+[logo]: https://github.com/Hampfh/DotLibrary/blob/master/logo.png "DotLibrary"
+
 ##### Dependencies:
 * SDL2 library
 * Visual Studio
