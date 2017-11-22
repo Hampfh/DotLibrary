@@ -18,8 +18,6 @@ int main(int argc, char** argv) {
 	Grid grid(4,4);
 	grid.SetupWindow("Test window", 800, 500);
 
-	
-
 	grid.drawGrid();
 	grid.mainWindow->clear();
 	while (true);
