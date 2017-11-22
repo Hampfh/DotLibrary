@@ -1,5 +1,7 @@
-# DotLibrary
-A simple visualization library
+![alt text](https://github.com/Hampfh/DotLibrary/blob/master/logo.png "DotLibrary")
+
+## Download:
+[_**DotLibrary**_](https://github.com/Hampfh/DotLibrary/releases "Take me to the download page")
 
 ##### Dependencies:
 * SDL2 library
@@ -34,3 +36,16 @@ Create a new folder inside **"deps"** called **lib** and drag all [.lib] files t
   7. Lastly locate **Linker->System** open **SubSystem** and choose **Console (/SUBSYSTEM:CONSOLE)**.
 
 ## DotLibrary Installation:
+#### 1. Download Package
+  1. Find the DotLibrary download via github on the link bellow: https://github.com/Hampfh/DotLibrary/releases
+  2. Download the latest version of _DotLibrary.zip_
+
+#### 2. Add library
+  1. Locate **DotLibrary->include** and drag all it's content inside **deps->include**
+  2. Locate **DotLibrary->lib** and drag the it's content inside **deps->lib**
+
+#### 3. Link library
+  1. Open your project in visual studio. 
+  2. Navigate to **Project->Properties**. 
+  3. Now locate **Linker->Input** and open **Additional Dependencies**. On a new line add **DotLibrary.lib**.
+     * **Note:** Don't forget to click **OK** when you leave this window.
