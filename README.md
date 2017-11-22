@@ -1,8 +1,5 @@
 ![alt text](https://github.com/Hampfh/DotLibrary/blob/master/logo.png "DotLibrary")
 
-## Download:
-[**Releases**](https://github.com/Hampfh/DotLibrary/releases "Take me to the download page")
-
 ##### Dependencies:
 * SDL2 library
 * Visual Studio
