@@ -1,7 +1,7 @@
 ![alt text](https://github.com/Hampfh/DotLibrary/blob/master/logo.png "DotLibrary")
 
 ## Download:
-[_**DotLibrary**_](https://github.com/Hampfh/DotLibrary/releases "Take me to the download page")
+[**Releases**](https://github.com/Hampfh/DotLibrary/releases "Take me to the download page")
 
 ##### Dependencies:
 * SDL2 library
