@@ -14,7 +14,7 @@
    **Visual C++**
 
 #### 2. Create folders (Outside visual studio)
-  * **Note:** If you havn't already create an empty c++ project.
+  * **Note:** Create an empty C++ project if you haven't already.
   1. Now go into your solution directory (where your [.sln] file is).
 Create a folder in the directory, the name of the folder is optional but we call it **"deps"**. 
      * _**Note:** If your folder name is something else then remember to stick with that. Change every **deps** to whatever you've called your file._
