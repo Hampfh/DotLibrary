@@ -11,13 +11,12 @@ public:
 	Grid(int width, int height);
 	~Grid();
 	void visualize();
-	void Grid::SetupWindow(string title, int screenWidth, int screenHeight); 
+	//void Grid::SetupWindow(string title, int screenWidth, int screenHeight); 
 	void drawDefaults();
 	Dot *specifyDot(int xCord, int yCord);
 private:
-	string setup(int width, int height);
+	void setup(int width, int height);
 public:
-	Window *window = nullptr;
 
 	int spacing = 10;
 	int dotSize = 20;

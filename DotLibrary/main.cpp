@@ -1,4 +1,5 @@
 #include "Grid.h"
+#include "Window.h"
 
 void pollEvents(Window &window) {
 	SDL_Event evnt;
@@ -10,26 +11,27 @@ void pollEvents(Window &window) {
 
 int main(int argc, char** argv) {
 
+	Window *window = new Window("DotLibrary is very cool", 800, 600);
+
 	Grid myGrid(10, 10);
 	Dot* thisDot = myGrid.specifyDot(2,2);
-	myGrid.SetupWindow("DotLibrary is very cool", 800, 600);
 
 	myGrid.color.g = 20;
 	
 	int second = 0;
 	while (true) {
-		pollEvents(*myGrid.window);
+		pollEvents(*window);
 
 		myGrid.drawDefaults();
 		if (second == 0) {
 			thisDot = thisDot->UP;
 			thisDot->color.r = 20;
-			thisDot->callDrawMethod();
+			thisDot->draw();
 		}
 		else if (second == 1) {
 			thisDot = thisDot->UP;
 			thisDot->color.r = 20;
-			thisDot->callDrawMethod();
+			thisDot->draw();
 		}
 		else {
 			second = -1;
@@ -38,9 +40,9 @@ int main(int argc, char** argv) {
 		second++;
 
 		SDL_Delay(250);
-		myGrid.window->clear();
+		window->clear();
 
-		if (myGrid.window->isClosed()) {
+		if (window->isClosed()) {
 			break;
 		}
 	}

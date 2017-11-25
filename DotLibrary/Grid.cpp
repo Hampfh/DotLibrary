@@ -12,7 +12,7 @@ Grid::~Grid(){
 }
 
 // Code underneath creates the grid with all dots and their coordinates
-string Grid::setup(int width, int height) {
+void Grid::setup(int width, int height) {
 	// Initializing variables
 		
 	Origo = new Dot(0, 0);
@@ -72,13 +72,7 @@ string Grid::setup(int width, int height) {
 			LastDot = currentDot->RIGHT;
 		}
 	}
-	return string();
 }
-
-void Grid::SetupWindow(string title, int screenWidth, int screenHeight) {
-	window = new Window(title, screenWidth, screenHeight);
-}
-
 
 void Grid::visualize() {
 	Dot *currentDot = Origo;
@@ -141,7 +135,7 @@ void Grid::drawDefaults() {
 	Origo->color.g = color.g;
 	Origo->color.b = color.b;
 	Origo->color.a = color.a;
-	Origo->callDrawMethod();
+	Origo->draw();
 
 	current_xPos = current_xPos + dotSize + spacing;
 
@@ -161,7 +155,7 @@ void Grid::drawDefaults() {
 		current_xPos = current_xPos + dotSize + spacing;
 
 		// Drawing the current dot to the screen
-		currentDot->callDrawMethod();
+		currentDot->draw();
 
 		if (currentDot->RIGHT == nullptr) {
 
