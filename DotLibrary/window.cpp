@@ -6,6 +6,7 @@ SDL_Renderer *Window::renderer = nullptr;
 Window::Window(const std::string &title, int width, int height) :
 _title(title), _width(width), _height(height)
 {
+	// Runnes init();
 	_closed = !init();
 }
 

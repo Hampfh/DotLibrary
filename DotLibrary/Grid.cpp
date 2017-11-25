@@ -76,7 +76,7 @@ string Grid::setup(int width, int height) {
 }
 
 void Grid::SetupWindow(string title, int screenWidth, int screenHeight) {
-	mainWindow = new Window(title, screenWidth, screenHeight);
+	window = new Window(title, screenWidth, screenHeight);
 }
 
 
@@ -125,24 +125,25 @@ void Grid::visualize() {
 	} 
 }
 
-void Grid::drawGrid() {
+void Grid::drawDefaults() {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
 
-	int current_xPos = GridSpecifications.gridOffset.x;
-	int current_yPos = GridSpecifications.gridOffset.y;
+	int current_xPos = gridOffset.x;
+	int current_yPos = gridOffset.y;
 	
+	// Origo setup
 	Origo->position.x = current_xPos;
 	Origo->position.y = current_yPos;
-	Origo->size.w = GridSpecifications.dotSize;
-	Origo->size.h = GridSpecifications.dotSize;
-	Origo->color.r = GridSpecifications.color.r;
-	Origo->color.g = GridSpecifications.color.g;
-	Origo->color.b = GridSpecifications.color.b;
-	Origo->color.a = GridSpecifications.color.a;
+	Origo->size.w = dotSize;
+	Origo->size.h = dotSize;
+	Origo->color.r = color.r;
+	Origo->color.g = color.g;
+	Origo->color.b = color.b;
+	Origo->color.a = color.a;
 	Origo->callDrawMethod();
 
-	current_xPos = current_xPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
+	current_xPos = current_xPos + dotSize + spacing;
 
 	currentDot = currentDot->RIGHT;
 
@@ -150,14 +151,14 @@ void Grid::drawGrid() {
 		// Specifing properties for each dot
 		currentDot->position.x = current_xPos;
 		currentDot->position.y = current_yPos;
-		currentDot->size.w = GridSpecifications.dotSize;
-		currentDot->size.h = GridSpecifications.dotSize;
-		currentDot->color.r = GridSpecifications.color.r;
-		currentDot->color.g = GridSpecifications.color.g;
-		currentDot->color.b = GridSpecifications.color.b;
-		currentDot->color.a = GridSpecifications.color.a;
+		currentDot->size.w = dotSize;
+		currentDot->size.h = dotSize;
+		currentDot->color.r = color.r;
+		currentDot->color.g = color.g;
+		currentDot->color.b = color.b;
+		currentDot->color.a = color.a;
 		
-		current_xPos = current_xPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
+		current_xPos = current_xPos + dotSize + spacing;
 
 		// Drawing the current dot to the screen
 		currentDot->callDrawMethod();
@@ -169,8 +170,8 @@ void Grid::drawGrid() {
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
 				firstDotOfCurrentLine = currentDot;
-				current_xPos = GridSpecifications.gridOffset.x;
-				current_yPos = current_yPos + GridSpecifications.dotSize + GridSpecifications.betweenDotDistance;
+				current_xPos = gridOffset.x;
+				current_yPos = current_yPos + dotSize + spacing;
 			}
 			else {
 				cerr << "The requested dot was not found" << endl;
