@@ -1,13 +1,14 @@
 #pragma once
 #include <string>
-#include "rect.h"
+#include "Window.h"
+
 using namespace std;
 
 class Dot {
 public:
 	Dot(int xPos, int yPos);
 	~Dot();
-	void callDrawMethod();
+	void draw();
 	
 public:
 	int xGridPosition;
@@ -17,7 +18,6 @@ public:
 	Dot *DOWN = nullptr;
 	Dot *RIGHT = nullptr;
 	Dot *LEFT = nullptr;
-	Rect *thisDot = nullptr;
 
 	struct coordinates {
 		int x, y;
