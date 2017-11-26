@@ -1,5 +1,7 @@
 #include "Text.h"
 
+#include <iostream>
+
 Text::Text()
 {
 }
@@ -33,6 +35,7 @@ void Text::drawText(Dot* startPointer, string text, int textSize) {
 
 // Private functions
 string Text::_readInput(char letter) {
+	cout << "this is the letters number: " << int(letter) << endl;
 	if (letter == 'a') {
 		characters.live = characters.a;
 	}
