@@ -13,8 +13,11 @@ void Text::drawText(Dot* startPointer, string text, int textSize) {
 	Dot *currentDot = startPointer;
 	
 	for (int i = 0; i < text.length(); i++) {
+		text[i] = tolower(text[i]);
+
 		characters.live = _readInput(text[i]);
 		_drawText(currentDot, characters.live);
+		
 		int characterLength = ((characters.live[0]) - '0') + 1;
 
 		for (int j = 0; j < characterLength; j++) {
@@ -24,9 +27,6 @@ void Text::drawText(Dot* startPointer, string text, int textSize) {
 			else {
 				currentDot = currentDot->RIGHT;
 			}
-		}
-		if (currentDot->RIGHT == nullptr) {
-			break;
 		}
 	}
 }

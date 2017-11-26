@@ -178,7 +178,8 @@ void Grid::drawDefaults() {
 	}
 }
 
-Dot* Grid::specifyDot(int xCord, int yCord) {
+// Returns the requested dot to the user
+Dot* Grid::dot(int xCord, int yCord) {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
 

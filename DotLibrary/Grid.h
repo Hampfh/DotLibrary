@@ -13,7 +13,7 @@ public:
 	void visualize();
 	//void Grid::SetupWindow(string title, int screenWidth, int screenHeight); 
 	void drawDefaults();
-	Dot *specifyDot(int xCord, int yCord);
+	Dot *dot(int xCord, int yCord);
 private:
 	void setup(int width, int height);
 public:

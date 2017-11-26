@@ -34,7 +34,7 @@ private:
 		string o = "5RRRRDDDDLLLLUUU";
 		string p = "5RRRR!DD!LLLLUDDD";
 		string q = "5RRRRDDD!DL!UD!LLLUUU";
-		string r = "5RRR!DDLDD!RL!UULLUDDD";
+		string r = "4RRR!DDLDD!RL!UULLUDDD";
 		string s = "5RRRRLLLLDDRRRRDDLLLL";
 		string t = "5RRRRLLDDDD";
 		string u = "5DDDDRRRRUUUU";
