@@ -11,8 +11,7 @@ public:
 	void draw();
 	
 public:
-	int xGridPosition;
-	int yGridPosition;
+	int xGridPosition, yGridPosition; // Grid coordinates
 
 	Dot *UP = nullptr;
 	Dot *DOWN = nullptr;
@@ -20,7 +19,7 @@ public:
 	Dot *LEFT = nullptr;
 
 	struct coordinates {
-		int x, y;
+		int x, y; // Screen coordinates
 	} position;
 	struct structSize {
 		int w;
