@@ -32,7 +32,6 @@ public:
 		int a = 255;
 	} color;
 	
-private:
 	int _gridLengthInDots;
 	int _gridHeightInDots;
 
