@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 	myGrid.gridOffset.x = 10;
 	myGrid.gridOffset.y = 10;
 	myGrid.dotSize = 20;
-	myGrid.spacing = 0;
+	myGrid.spacing = 1;
 
 	Dot* test = myGrid.dot(1, 2);
 
@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 	Text text;
 	myGrid.drawDefaults();
 
-	text.drawText(test,"Rost",20);
+	text.drawText(test,"Ross",20);
 	window->clear();
 
 	while (true) {

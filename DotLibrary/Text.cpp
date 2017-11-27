@@ -49,6 +49,8 @@ string Text::_readInput(char letter) {
 
 void Text::_drawText(Dot* currentDot, string letterInstructions) {
 
+	cout << "CurrentDot is: " << currentDot->xGridPosition << ":" << currentDot->yGridPosition << endl;
+
 	int letterLength = letterInstructions.length();
 	if (letterInstructions[0] != '#') {
 		currentDot->color.r = 200;
@@ -70,7 +72,9 @@ void Text::_drawText(Dot* currentDot, string letterInstructions) {
 		else if (letterInstructions[i] == 'L' && currentDot->LEFT != nullptr) {
 			currentDot = currentDot->LEFT;
 		}
-
+		else if (i != 0) {
+			break;
+		}
 		if (letterInstructions[i + 1] != '!' && letterInstructions[i] != '#') {
 			currentDot->color.r = 200;
 			currentDot->color.g = 0;
