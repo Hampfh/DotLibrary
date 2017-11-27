@@ -26,5 +26,9 @@ string DOTLIBRARY_FONT_DEFINITION[] = {
 	"5DDDDR!UR!UR!DRDUUUU",			// w
 	"5R!DR!DR!DR!DU!LU!LD!LD!LU!RU!RU!RU!R", // x
 	"5R!DR!DU!RU!RD!LD!LDD",		// y
-	"5RRRRDD!LLLL!DDRRRR"			// z	
+	"5RRRRDD!LLLL!DDRRRR",			// z	
+	"",								// å
+	"",								// ä
+	"",								// ö
+	"4#R!R!RDDDDLLLU"							// space
 };

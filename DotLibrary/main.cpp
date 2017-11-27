@@ -13,9 +13,9 @@ void pollEvents(Window &window) {
 
 int main(int argc, char** argv) {
 
-	Window *window = new Window("DotLibrary is very cool", 1700, 800);
+	Window *window = new Window("DotLibrary is very cool", 1400, 200);
 
-	Grid myGrid(50, 50);
+	Grid myGrid(80, 10);
 	myGrid.gridOffset.x = 10;
 	myGrid.gridOffset.y = 10;
 	myGrid.dotSize = 10;
@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
 	Text text;
 	myGrid.drawDefaults();
 
-	text.drawText(test,"oooooooi",20);
+	text.drawText(test,"abcdefghijklmnopqrstuvwxyz",20);
 	window->clear();
 
 	while (true) {

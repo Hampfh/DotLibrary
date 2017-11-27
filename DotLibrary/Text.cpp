@@ -19,38 +19,43 @@ void Text::drawText(Dot* startPointer, string text, int textSize) {
 	
 	for (int i = 0; i < int(text.length()); i++) {
 		text[i] = tolower(text[i]);
-		cout << "Currently doing: " << text[i] << endl;
 
 		liveChar = _readInput(text[i]);
 		Grid* currentLetterGrid = _letterGrid(liveChar[0] - '0');
 		_drawText(currentLetterGrid->dot(0,0), liveChar);
 		
 		if (!_letterGridToGrid(currentDot, currentLetterGrid, 200, 0, 0, 0)) {
-			break;
+			
 		}
 
 		int characterLength = ((liveChar[0]) - '0') + 1;
 		cout << "--" << endl;
 		for (int j = 0; j < characterLength; j++) {
 			if (currentDot->RIGHT == nullptr) {
-				cout << "Found end of screen!" << endl;
 				running = false;
 				break;
 			}
 			else {
-				cout << "I'm moving..." << endl;
 				currentDot = currentDot->RIGHT;
 			}
 		}
 		if (running == false) {
-			cout << "I'm quiting" << endl;
 			break;
 		}
 	}
 }
 
 string Text::_readInput(char letter) {
-	int letterNum = int(letter) - int('a');
+	int letterNum;
+	
+	switch (letter) {
+	case ' ':
+		letterNum = CHAR_SPACE;
+		break;
+	default:
+		letterNum = int(letter) - int('a');
+		break;
+	}
 	return (DOTLIBRARY_FONT_DEFINITION[letterNum]);
 }
 
@@ -60,8 +65,6 @@ Grid* Text::_letterGrid(int letterWidth) {
 }
 
 void Text::_drawText(Dot* currentDot, string letterInstructions) {
-
-	cout << "CurrentDot is: " << currentDot->xGridPosition << ":" << currentDot->yGridPosition << endl;
 
 	int letterLength = letterInstructions.length();
 	if (letterInstructions[0] != '#') {
@@ -104,10 +107,7 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, int r, int g, int 
 	Dot* firstDotOfCurrentLineM = currentDotM;
 	Dot* firstDotOfCurrentLineL = currentDotL;
 
-	cout << "Grid size: " << letterGrid->_gridLengthInDots << ":" << letterGrid->_gridHeightInDots << endl;
-
 	while (currentDotL != letterGrid->LastDot) {
-		cout << "The local dot is: " << currentDotL->xGridPosition << " and the global is: " << currentDotM->xGridPosition << endl;
 		if (currentDotL->color.r == r && currentDotL->color.g == g && currentDotL->color.b == b && currentDotL->color.a == a) {
 			currentDotM->color.r = currentDotL->color.r;
 			currentDotM->color.g = currentDotL->color.g;
@@ -116,14 +116,11 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, int r, int g, int 
 			currentDotM->draw();
 		}
 		
-		//cout << "I'm drawing: " << currentDotM->xGridPosition << ":" << currentDotM->yGridPosition << endl;
-
 		if (currentDotM->RIGHT == nullptr || currentDotL->RIGHT == nullptr) {
-
 			currentDotL = firstDotOfCurrentLineL;
 			currentDotM = firstDotOfCurrentLineM;
 
-			if (currentDotM->DOWN != nullptr || currentDotL->DOWN != nullptr) {
+			if (currentDotM->DOWN != nullptr && currentDotL->DOWN != nullptr) {
 				currentDotM = currentDotM->DOWN;
 				firstDotOfCurrentLineM = currentDotM;
 
@@ -139,7 +136,5 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, int r, int g, int 
 			currentDotL = currentDotL->RIGHT;
 		}
 	}
-
-
 	return true;
 }
