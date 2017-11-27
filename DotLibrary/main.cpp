@@ -15,11 +15,11 @@ int main(int argc, char** argv) {
 
 	Window *window = new Window("DotLibrary is very cool", 1700, 800);
 
-	Grid myGrid(60, 20);
+	Grid myGrid(20, 20);
 	myGrid.gridOffset.x = 10;
 	myGrid.gridOffset.y = 10;
 	myGrid.dotSize = 20;
-	myGrid.spacing = 3;
+	myGrid.spacing = 0;
 
 	Dot* test = myGrid.dot(1, 2);
 
