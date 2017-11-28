@@ -179,6 +179,7 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate colo
 				firstDotOfCurrentLineL = currentDotL;
 			}
 			else {
+				delete letterGrid;
 				return false;
 			}
 		}
@@ -187,5 +188,6 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate colo
 			currentDotL = currentDotL->RIGHT;
 		}
 	}
+	delete letterGrid;
 	return true;
 }

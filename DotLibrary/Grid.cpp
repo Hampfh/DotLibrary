@@ -8,7 +8,29 @@ Grid::Grid(int width, int height) :
 
 
 Grid::~Grid(){
+	//visualize();
+	Dot* currentDot = Origo;
+	Dot* prevDot = Origo;
+	Dot* firstDotOfCurrentLine = currentDot->DOWN;
 
+	while (currentDot != LastDot) {
+		if (currentDot->RIGHT == nullptr) {
+
+			prevDot = currentDot;
+			currentDot = firstDotOfCurrentLine;
+			delete prevDot;
+
+			if (currentDot->DOWN != nullptr) {
+				firstDotOfCurrentLine = currentDot->DOWN;
+			}
+		}
+		else {
+			prevDot = currentDot;
+			currentDot = currentDot->RIGHT;
+			delete prevDot;
+		}
+	}
+	delete LastDot;
 }
 
 // Code underneath creates the grid with all dots and their coordinates
@@ -68,7 +90,7 @@ void Grid::setup(int width, int height) {
 
 		}
 		else {
-			currentDot->RIGHT = new Dot(currentDot->xGridPosition+1, currentyPos);
+			currentDot->RIGHT = new Dot(currentDot->coordinates.x+1, currentyPos);
 			LastDot = currentDot->RIGHT;
 		}
 	}
@@ -77,7 +99,7 @@ void Grid::setup(int width, int height) {
 void Grid::visualize() {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
-	cout << "Line " << Origo->yGridPosition << endl;
+	cout << "Line " << Origo->coordinates.y << endl;
 	while (currentDot != LastDot) {
 		if (currentDot == Origo) {
 			cout << "!";
@@ -94,7 +116,7 @@ void Grid::visualize() {
 		if (currentDot->RIGHT != nullptr) {
 			cout << ">";
 		}
-		cout << "(" << currentDot->xGridPosition << " : " << currentDot->yGridPosition << ")";
+		cout << "(" << currentDot->coordinates.x << " : " << currentDot->coordinates.y << ")";
 		cout << " ";		
 
 		if (currentDot->RIGHT == nullptr) {
@@ -105,7 +127,7 @@ void Grid::visualize() {
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
 				firstDotOfCurrentLine = currentDot;
-				cout << "Line " << currentDot->yGridPosition << endl;
+				cout << "Line " << currentDot->coordinates.y << endl;
 			}
 			else {
 				cout << endl;
@@ -127,8 +149,8 @@ void Grid::drawDefaults() {
 	int current_yPos = gridOffset.y;
 	
 	// Origo setup
-	Origo->position.x = current_xPos;
-	Origo->position.y = current_yPos;
+	Origo->screenCoordinates.x = current_xPos;
+	Origo->screenCoordinates.y = current_yPos;
 	Origo->size.w = dotSize;
 	Origo->size.h = dotSize;
 	Origo->color.r = color.r;
@@ -143,8 +165,8 @@ void Grid::drawDefaults() {
 
 	while (currentDot != LastDot) {
 		// Specifing properties for each dot
-		currentDot->position.x = current_xPos;
-		currentDot->position.y = current_yPos;
+		currentDot->screenCoordinates.x = current_xPos;
+		currentDot->screenCoordinates.y = current_yPos;
 		currentDot->size.w = dotSize;
 		currentDot->size.h = dotSize;
 		currentDot->color.r = color.r;
@@ -185,7 +207,7 @@ Dot* Grid::dot(int xCord, int yCord) {
 
 	if (xCord >= 0 && xCord < _gridLengthInDots && yCord >= 0 && yCord < _gridHeightInDots) {
 		while (currentDot != LastDot) {
-			if (currentDot->xGridPosition == xCord && currentDot->yGridPosition == yCord) {
+			if (currentDot->coordinates.x == xCord && currentDot->coordinates.y == yCord) {
 				return currentDot;
 			}
 
