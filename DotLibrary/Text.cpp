@@ -1,5 +1,4 @@
 #include "Text.h"
-#include "font.h"
 
 #include <iostream>
 
@@ -12,7 +11,15 @@ Text::~Text()
 {
 }
 
-void Text::drawText(Dot* startPointer, string text, int textSize) {
+void Text::setColor(int r, int g, int b, int a = 255) {
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	color.a = a;
+}
+
+void Text::drawText(Dot* startPointer, string text) {
+
 	Dot *currentDot = startPointer;
 	string liveChar;
 	bool running = true;
@@ -22,9 +29,9 @@ void Text::drawText(Dot* startPointer, string text, int textSize) {
 
 		liveChar = _readInput(text[i]);
 		Grid* currentLetterGrid = _letterGrid(liveChar[0] - '0');
-		_drawText(currentLetterGrid->dot(0,0), liveChar);
+		_drawText(currentLetterGrid->dot(0,0), liveChar, color);
 		
-		if (!_letterGridToGrid(currentDot, currentLetterGrid, 200, 0, 0, 0)) {
+		if (!_letterGridToGrid(currentDot, currentLetterGrid, color)) {
 			
 		}
 
@@ -49,10 +56,47 @@ string Text::_readInput(char letter) {
 	
 	switch (letter) {
 	case ' ':
-		letterNum = CHAR_SPACE;
+		letterNum = DOTLIB_FONT_CHAR_SPACE;
 		break;
 	case '.':
-		letterNum = CHAR_DOT;
+		letterNum = DOTLIB_FONT_CHAR_DOT;
+		break;
+	case ',':
+		letterNum = DOTLIB_FONT_CHAR_COMMA;
+		break;
+	case '!':
+		letterNum = DOTLIB_FONT_CHAR_EXCLAMATION;
+		break;
+	case '1':
+		letterNum = DOTLIB_FONT_CHARINT_ONE;
+		break;
+	case '2':
+		letterNum = DOTLIB_FONT_CHARINT_TWO;
+		break;
+	case '3':
+		letterNum = DOTLIB_FONT_CHARINT_THREE;
+		break;
+	case '4':
+		letterNum = DOTLIB_FONT_CHARINT_FOUR;
+		break;
+	case '5':
+		letterNum = DOTLIB_FONT_CHARINT_FIVE;
+		break;
+	case '6':
+		letterNum = DOTLIB_FONT_CHARINT_SIX;
+		break;
+	case '7':
+		letterNum = DOTLIB_FONT_CHARINT_SEVEN;
+		break;
+	case '8':
+		letterNum = DOTLIB_FONT_CHARINT_EIGHT;
+		break;
+	case '9':
+		letterNum = DOTLIB_FONT_CHARINT_NINE;
+		break;
+	case '0':
+		letterNum = DOTLIB_FONT_CHARINT_ZERO;
+		break;
 	default:
 		letterNum = int(letter) - int('a');
 		break;
@@ -65,14 +109,14 @@ Grid* Text::_letterGrid(int letterWidth) {
 	return thisLetter;
 }
 
-void Text::_drawText(Dot* currentDot, string letterInstructions) {
+void Text::_drawText(Dot* currentDot, string letterInstructions, colorTemplate color) {
 
 	int letterLength = letterInstructions.length();
 	if (letterInstructions[1] != '#') {
-		currentDot->color.r = 200;
-		currentDot->color.g = 0;
-		currentDot->color.b = 0;
-		currentDot->draw();
+		currentDot->color.r = color.r;
+		currentDot->color.g = color.g;
+		currentDot->color.b = color.b;
+		currentDot->color.a = color.a;
 	}
 
 	for (int i = 1; i < letterLength; i++) {
@@ -90,9 +134,10 @@ void Text::_drawText(Dot* currentDot, string letterInstructions) {
 		}
 		
 		if (letterInstructions[i + 1] != '!' && letterInstructions[i] != '#') {
-			currentDot->color.r = 200;
-			currentDot->color.g = 0;
-			currentDot->color.b = 0;
+			currentDot->color.r = color.r;
+			currentDot->color.g = color.g;
+			currentDot->color.b = color.b;
+			currentDot->color.a = color.a;
 		}
 		else if (letterInstructions[i + 1] == '!') {
 			i++;
@@ -100,14 +145,14 @@ void Text::_drawText(Dot* currentDot, string letterInstructions) {
 	}
 }
 
-bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, int r, int g, int b, int a) {
+bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate color) {
 	Dot* currentDotM = mainGrid;
 	Dot* currentDotL = letterGrid->dot(0,0);
 	Dot* firstDotOfCurrentLineM = currentDotM;
 	Dot* firstDotOfCurrentLineL = currentDotL;
 
 	while (currentDotL != letterGrid->LastDot) {
-		if (currentDotL->color.r == r && currentDotL->color.g == g && currentDotL->color.b == b && currentDotL->color.a == a) {
+		if (currentDotL->color.r == color.r && currentDotL->color.g == color.g && currentDotL->color.b == color.b && currentDotL->color.a == color.a) {
 			currentDotM->color.r = currentDotL->color.r;
 			currentDotM->color.g = currentDotL->color.g;
 			currentDotM->color.b = currentDotL->color.b;

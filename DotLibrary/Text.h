@@ -1,7 +1,10 @@
 #pragma once
 #include "Dot.h"
-#include <string>
 #include "Grid.h"
+#include "Definitions.h"
+#include "font.h"
+
+#include <string>
 using namespace std;
 
 class Text
@@ -10,11 +13,15 @@ class Text
 public:
 	Text();
 	~Text();
-	void drawText(Dot* startPointer, string text, int textSize);
+	void setColor(int r, int g, int b, int a);
+	void drawText(Dot* startPointer, string text);
 // Private functions
 private:
 	string _readInput(char letter);
 	Grid* _letterGrid(int letterWidth);
-	void _drawText(Dot* startDot, string letterInstructions);
-	bool _letterGridToGrid(Dot* mainGrid, Grid* letterGrid, int r, int g, int b, int a);
+	void _drawText(Dot* startDot, string letterInstructions, colorTemplate color);
+	bool _letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate color);
+// Private variables
+private:
+	colorTemplate color;
 };

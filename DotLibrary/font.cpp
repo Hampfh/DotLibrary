@@ -30,6 +30,18 @@ string DOTLIBRARY_FONT_DEFINITION[] = {
 	"",								// å
 	"",								// ä
 	"",								// ö
-	"4#"							// space
-	"2DDD"						// .
+	"3#RDLD!RDDRLL",			// 1
+	"5RRRR!DDLLLL!DDRRRR",			// 2
+	"5RRRR!DDLLLL!D!DRRRR!U",		// 3
+	"5DDRRRRUUDDDD",				// 4
+	"5#RRRRLLLL!DDRRRRDD!LLLL",		// 5
+	"5RRRRLLLLDDRRRRDDLLLLU",		// 6
+	"5RRRRDDDD",					// 7
+	"5DURRRRDDDDLLLLUURRR",			// 8
+	"5RRRRDDDDUULLLLU",				// 9
+	"4RRRDDDDLLLUUUU",				// 0
+	"4#",							// space
+	"2#D!D!DDRU",					// .
+	"2#D!D!DD",						// ,	
+	"1DDD!D"						// !
 };

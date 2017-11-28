@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Window.h"
 #include "Dot.h"
+#include "Definitions.h"
 
 using namespace std;
 
@@ -25,12 +26,8 @@ public:
 		int x = 20;
 		int y = 20;
 	} gridOffset;
-	struct colorForEachDot {
-		int r = 255;
-		int g = 255;
-		int b = 255;
-		int a = 255;
-	} color;
+
+	colorTemplate color;
 	
 	int _gridLengthInDots;
 	int _gridHeightInDots;

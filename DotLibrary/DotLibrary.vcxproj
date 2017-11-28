@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Definitions.h" />
     <ClInclude Include="Dot.h" />
     <ClInclude Include="font.h" />
     <ClInclude Include="Grid.h" />

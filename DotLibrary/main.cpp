@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Text.h"
 #include <iostream>
+#include "Definitions.h"
 
 void pollEvents(Window &window) {
 	SDL_Event evnt;
@@ -13,10 +14,10 @@ void pollEvents(Window &window) {
 
 int main(int argc, char** argv) {
 
-	Window *window = new Window("DotLibrary is very cool", 700, 200);
+	Window *window = new Window("DotLibrary is very cool", 800, 800);
 
 	Grid myGrid(200, 10);
-	myGrid.gridOffset.x = -700;
+	myGrid.gridOffset.x = -300;
 	myGrid.gridOffset.y = 10;
 	myGrid.dotSize = 10;
 	myGrid.spacing = 1;
@@ -27,7 +28,6 @@ int main(int argc, char** argv) {
 
 
 	Text text;
-	
 
 	int temp = 0;
 
@@ -35,8 +35,8 @@ int main(int argc, char** argv) {
 		pollEvents(*window);
 		
 		myGrid.drawDefaults();
-
-		text.drawText(myGrid.dot(temp, 2), "hello", 20);
+		text.setColor(200,200,200,200);
+		text.drawText(myGrid.dot(temp, 2), "Hello");
 		window->clear();
 
 		temp++;

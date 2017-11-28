@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Window.h"
+#include "Definitions.h"
 
 using namespace std;
 
@@ -25,11 +26,6 @@ public:
 		int w;
 		int h;
 	} size;
-	struct colors {
-		int r;
-		int g;
-		int b;
-		int a;
-	} color;
+	colorTemplate color;
 };
 
