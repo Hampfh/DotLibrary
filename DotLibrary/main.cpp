@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
 		
 		myGrid.drawDefaults();
 		text.setColor(200,200,200,200);
-		text.drawText(myGrid.dot(temp, 2), "Hello");
+		text.drawText(myGrid.dot(temp, 2), "H");
 		window->clear();
 
 		temp++;

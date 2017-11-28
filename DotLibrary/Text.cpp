@@ -19,24 +19,30 @@ void Text::setColor(int r, int g, int b, int a = 255) {
 }
 
 void Text::drawText(Dot* startPointer, string text) {
+	pixelLength = 0;
+	dotLength = 0;
 
 	Dot *currentDot = startPointer;
-	string liveChar;
+	string charInstructions;
+	int charDotLength;
 	bool running = true;
 	
 	for (int i = 0; i < int(text.length()); i++) {
 		text[i] = tolower(text[i]);
 
-		liveChar = _readInput(text[i]);
-		Grid* currentLetterGrid = _letterGrid(liveChar[0] - '0');
-		_drawText(currentLetterGrid->dot(0,0), liveChar, color);
+		charInstructions = _readInput(text[i]);
+		charDotLength = charInstructions[0] - '0';
+		Grid* currentLetterGrid = _letterGrid(charDotLength);
+		_drawText(currentLetterGrid->dot(0,0), charInstructions, color);
 		
+		// Total text length addon
+		dotLength = dotLength + charDotLength + 1;
+
 		if (!_letterGridToGrid(currentDot, currentLetterGrid, color)) {
 			
 		}
 
-		int characterLength = ((liveChar[0]) - '0') + 1;
-		for (int j = 0; j < characterLength; j++) {
+		for (int j = 0; j < charDotLength + 1; j++) {
 			if (currentDot->RIGHT == nullptr) {
 				running = false;
 				break;
@@ -49,6 +55,7 @@ void Text::drawText(Dot* startPointer, string text) {
 			break;
 		}
 	}
+	pixelLength = dotLength * startPointer->size.w;
 }
 
 string Text::_readInput(char letter) {

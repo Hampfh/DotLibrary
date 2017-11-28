@@ -21,6 +21,11 @@ private:
 	Grid* _letterGrid(int letterWidth);
 	void _drawText(Dot* startDot, string letterInstructions, colorTemplate color);
 	bool _letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate color);
+// Public variables
+public:
+	int dotLength;
+	int pixelLength;
+
 // Private variables
 private:
 	colorTemplate color;
