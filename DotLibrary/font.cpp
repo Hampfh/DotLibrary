@@ -30,5 +30,6 @@ string DOTLIBRARY_FONT_DEFINITION[] = {
 	"",								// å
 	"",								// ä
 	"",								// ö
-	"4#R!R!RDDDDLLLU"				// space
+	"4#"							// space
+	"2DDD"						// .
 };

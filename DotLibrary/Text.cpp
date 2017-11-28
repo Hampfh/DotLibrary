@@ -29,7 +29,6 @@ void Text::drawText(Dot* startPointer, string text, int textSize) {
 		}
 
 		int characterLength = ((liveChar[0]) - '0') + 1;
-		cout << "--" << endl;
 		for (int j = 0; j < characterLength; j++) {
 			if (currentDot->RIGHT == nullptr) {
 				running = false;
@@ -52,6 +51,8 @@ string Text::_readInput(char letter) {
 	case ' ':
 		letterNum = CHAR_SPACE;
 		break;
+	case '.':
+		letterNum = CHAR_DOT;
 	default:
 		letterNum = int(letter) - int('a');
 		break;
@@ -72,7 +73,6 @@ void Text::_drawText(Dot* currentDot, string letterInstructions) {
 		currentDot->color.g = 0;
 		currentDot->color.b = 0;
 		currentDot->draw();
-		cout << "MADE FIRST DOT" << endl;
 	}
 
 	for (int i = 1; i < letterLength; i++) {

@@ -13,30 +13,39 @@ void pollEvents(Window &window) {
 
 int main(int argc, char** argv) {
 
-	Window *window = new Window("DotLibrary is very cool", 1800, 200);
+	Window *window = new Window("DotLibrary is very cool", 700, 200);
 
-	Grid myGrid(150, 10);
-	myGrid.gridOffset.x = 10;
+	Grid myGrid(200, 10);
+	myGrid.gridOffset.x = -700;
 	myGrid.gridOffset.y = 10;
 	myGrid.dotSize = 10;
 	myGrid.spacing = 1;
 
-	myGrid.color.r = 255;
-	myGrid.color.g = 235;
-	myGrid.color.b = 59;
-
-	Dot* test = myGrid.dot(1, 2);
+	myGrid.color.r = 0;
+	myGrid.color.g = 0;
+	myGrid.color.b = 0;
 
 
 	Text text;
-	myGrid.drawDefaults();
+	
 
-	text.drawText(test,"abcdefghijklmnopqrstuvwxyz",20);
-	window->clear();
+	int temp = 0;
 
 	while (true) {
 		pollEvents(*window);
 		
+		myGrid.drawDefaults();
+
+		text.drawText(myGrid.dot(temp, 2), "hello", 20);
+		window->clear();
+
+		temp++;
+		SDL_Delay(1);
+
+		if (temp > 130) {
+			temp = 0;
+		}
+
 		if (window->isClosed()) {
 			break;
 		}
