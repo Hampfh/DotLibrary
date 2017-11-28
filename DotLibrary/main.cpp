@@ -13,9 +13,9 @@ void pollEvents(Window &window) {
 
 int main(int argc, char** argv) {
 
-	Window *window = new Window("DotLibrary is very cool", 1400, 200);
+	Window *window = new Window("DotLibrary is very cool", 1800, 200);
 
-	Grid myGrid(80, 10);
+	Grid myGrid(150, 10);
 	myGrid.gridOffset.x = 10;
 	myGrid.gridOffset.y = 10;
 	myGrid.dotSize = 10;

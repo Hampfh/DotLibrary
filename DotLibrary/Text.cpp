@@ -67,14 +67,15 @@ Grid* Text::_letterGrid(int letterWidth) {
 void Text::_drawText(Dot* currentDot, string letterInstructions) {
 
 	int letterLength = letterInstructions.length();
-	if (letterInstructions[0] != '#') {
+	if (letterInstructions[1] != '#') {
 		currentDot->color.r = 200;
 		currentDot->color.g = 0;
 		currentDot->color.b = 0;
 		currentDot->draw();
+		cout << "MADE FIRST DOT" << endl;
 	}
 
-	for (int i = 0; i < letterLength; i++) {
+	for (int i = 1; i < letterLength; i++) {
 		if (letterInstructions[i] == 'U' && currentDot->UP != nullptr) {
 			currentDot = currentDot->UP;	
 		}
@@ -87,9 +88,7 @@ void Text::_drawText(Dot* currentDot, string letterInstructions) {
 		else if (letterInstructions[i] == 'L' && currentDot->LEFT != nullptr) {
 			currentDot = currentDot->LEFT;
 		}
-		else if (i != 0) {
-			break;
-		}
+		
 		if (letterInstructions[i + 1] != '!' && letterInstructions[i] != '#') {
 			currentDot->color.r = 200;
 			currentDot->color.g = 0;
