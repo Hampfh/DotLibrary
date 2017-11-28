@@ -12,20 +12,15 @@ public:
 	void draw();
 	
 public:
-	int xGridPosition, yGridPosition; // Grid coordinates
 
 	Dot *UP = nullptr;
 	Dot *DOWN = nullptr;
 	Dot *RIGHT = nullptr;
 	Dot *LEFT = nullptr;
 
-	struct coordinates {
-		int x, y; // Screen coordinates
-	} position;
-	struct structSize {
-		int w;
-		int h;
-	} size;
 	colorTemplate color;
+	sizeTemplate size;
+	coordinateTemplate coordinates;
+	coordinateTemplate screenCoordinates;
 };
 
