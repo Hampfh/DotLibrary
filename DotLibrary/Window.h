@@ -2,13 +2,14 @@
 
 #include <string>
 #include <SDL.h>
+#include "Definitions.h"
 
 class Window {
 public:
 	Window(const std::string &title, int width, int height);
 	~Window();
 	void pollEvent(SDL_Event &evnt);
-	void clear(int r = 0, int g = 0, int b = 0, int a = 0) const;
+	void clear(int r = 0, int g = 0, int b = 0, int a = 255) const;
 	inline bool isClosed() const { return _closed; }
 private:
 	bool init();

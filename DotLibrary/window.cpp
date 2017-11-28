@@ -67,7 +67,7 @@ void Window::clear(int r, int g, int b, int a) const {
 	// RenderPreset is the final rendering command that renders to screen
 	SDL_RenderPresent(renderer);
 	// Set background color
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 	// Clears the screen
 	SDL_RenderClear(renderer);
 	
