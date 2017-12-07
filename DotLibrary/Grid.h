@@ -18,13 +18,12 @@ public:
 private:
 	void setup(int width, int height);
 public:
-
 	int spacing = 10;
-	int dotSize = 20;
+	int dotSize = 15;
 
 	struct coordinate {
-		int x = 20;
-		int y = 20;
+		int x = 0;
+		int y = 0;
 	} gridOffset;
 
 	colorTemplate color;

@@ -32,12 +32,13 @@ int main(int argc, char** argv) {
 	int temp = 0;
 
 	while (true) {
+
 		pollEvents(*window);
 		
 		myGrid.drawDefaults();
 		text.setColor(200,200,200,200);
 		text.drawText(myGrid.dot(temp, 2), "H");
-		window->clear();
+		window->refresh();
 
 		temp++;
 		SDL_Delay(1);

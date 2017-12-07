@@ -1,9 +1,9 @@
 #pragma once
 
 struct colorTemplate {
-	int r = 0;
-	int g = 0;
-	int b = 0;
+	int r = 255;
+	int g = 255;
+	int b = 255;
 	int a = 255;
 };
 
