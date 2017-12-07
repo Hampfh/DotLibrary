@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
 	int temp = 0;
 
 	while (true) {
+
 		pollEvents(*window);
 		
 		myGrid.drawDefaults();

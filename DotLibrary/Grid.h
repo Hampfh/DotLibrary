@@ -18,7 +18,6 @@ public:
 private:
 	void setup(int width, int height);
 public:
-
 	int spacing = 10;
 	int dotSize = 15;
 

@@ -6,12 +6,14 @@
 using namespace std;
 
 class Dot {
-public:
+private:
 	Dot(int xPos, int yPos);
 	~Dot();
 	void draw();
 	
-public:
+private:
+	friend class Grid;
+	friend class Text;
 
 	Dot *UP = nullptr;
 	Dot *DOWN = nullptr;

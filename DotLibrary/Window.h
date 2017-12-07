@@ -3,6 +3,7 @@
 #include <string>
 #include <SDL.h>
 #include "Definitions.h"
+#include "Dot.h"
 
 class Window {
 public:
@@ -14,6 +15,8 @@ public:
 private:
 	bool init();
 private:
+	friend class Dot;
+
 	std::string _title;
 	int _width = 800;
 	int _height = 600;
@@ -21,6 +24,5 @@ private:
 	bool _closed = false;
 	SDL_Window *_window = nullptr;
 
-public:
 	static SDL_Renderer *renderer;
 };
