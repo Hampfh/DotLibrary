@@ -12,7 +12,6 @@ public:
 	Grid(int width, int height);
 	~Grid();
 	void visualize();
-	//void Grid::SetupWindow(string title, int screenWidth, int screenHeight); 
 	void drawDefaults();
 	Dot *dot(int xCord, int yCord);
 private:

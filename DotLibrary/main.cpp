@@ -40,6 +40,9 @@ int main(int argc, char** argv) {
 		text.drawText(myGrid.dot(temp, 2), "H");
 		window->refresh();
 
+		Dot* testTWO = myGrid.dot(1, 1);
+
+
 		temp++;
 		SDL_Delay(1);
 

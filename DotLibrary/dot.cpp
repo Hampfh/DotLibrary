@@ -1,10 +1,9 @@
 #include "dot.h"
 
 Dot::Dot(int xPos, int yPos)  {
-	coordinates.x = xPos;
-	coordinates.y = yPos;
+	_coordinates.x = xPos;
+	_coordinates.y = yPos;
 }
-
 
 Dot::~Dot(){
 	
