@@ -145,8 +145,8 @@ void Grid::drawDefaults() {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
 
-	int current_xPos = gridOffset.x;
-	int current_yPos = gridOffset.y;
+	int current_xPos = offset.x;
+	int current_yPos = offset.y;
 	
 	// Origo setup
 	Origo->screenCoordinates.x = current_xPos;
@@ -186,7 +186,7 @@ void Grid::drawDefaults() {
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
 				firstDotOfCurrentLine = currentDot;
-				current_xPos = gridOffset.x;
+				current_xPos = offset.x;
 				current_yPos = current_yPos + dotSize + spacing;
 			}
 			else {

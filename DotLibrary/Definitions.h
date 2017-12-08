@@ -8,8 +8,8 @@ struct colorTemplate {
 };
 
 struct coordinateTemplate {
-	int x = 20;
-	int y = 20;
+	int x = 0;
+	int y = 0;
 };
 
 struct sizeTemplate {

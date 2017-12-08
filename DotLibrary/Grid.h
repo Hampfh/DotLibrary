@@ -16,22 +16,19 @@ public:
 	void drawDefaults();
 	Dot *dot(int xCord, int yCord);
 private:
+	friend class Text;
 	void setup(int width, int height);
+	Dot *Origo = nullptr;
+	Dot *LastDot = nullptr;
 public:
 	int spacing = 10;
 	int dotSize = 15;
 
-	struct coordinate {
-		int x = 0;
-		int y = 0;
-	} gridOffset;
+	coordinateTemplate offset;
 
 	colorTemplate color;
 	
-	int _gridLengthInDots;
-	int _gridHeightInDots;
-
-	Dot *Origo = nullptr;
-	Dot *LastDot = nullptr;
+	const int _gridLengthInDots;
+	const int _gridHeightInDots;
 };
 
