@@ -9,9 +9,10 @@ class Dot {
 private:
 	Dot(int xPos, int yPos);
 	~Dot();
+public:
 	void draw();
 	
-private:
+public:
 	friend class Grid;
 	friend class Text;
 
@@ -22,7 +23,10 @@ private:
 
 	colorTemplate color;
 	sizeTemplate size;
-	coordinateTemplate coordinates;
 	coordinateTemplate screenCoordinates;
+	const coordinateTemplate coordinates = *_coordinates;
+
+private:
+	coordinateTemplate* _coordinates;
 };
 
