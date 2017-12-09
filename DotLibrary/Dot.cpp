@@ -5,7 +5,6 @@ Dot::Dot(int xPos, int yPos)  {
 	_coordinates.y = yPos;
 }
 
-
 Dot::~Dot(){
 	
 }
