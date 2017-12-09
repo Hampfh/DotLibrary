@@ -17,22 +17,22 @@ int main(int argc, char** argv) {
 	Window *window = new Window("DotLibrary is very cool", 800, 800);
 
 	Grid myGrid(200, 10);
-	myGrid.offset.x = 20;
-	myGrid.offset.y = 10;
-	myGrid.dotSize = 15;
-	myGrid.spacing = 5;
+	myGrid.setOffset(20, 10);
+	myGrid.setDotSize(15);
+	myGrid.setSpacing(5);
 
-	myGrid.color.r = 0;
-	myGrid.color.g = 0;
-	myGrid.color.b = 0;
+	myGrid.setColor(100,20,40);
 
+	Dot* TestTWO = myGrid.dot(1, 1);
+
+	TestTWO->getColor().r;
 
 	Text text;
 
 	int temp = 0;
 
 	myGrid.drawDefaults();
-	text.setColor(200, 200, 200, 200);
+	text.setColor(200, 200, 200);
 	text.drawText(myGrid.dot(temp, 2), "Hampfh");
 	window->refresh();
 
@@ -40,7 +40,10 @@ int main(int argc, char** argv) {
 
 		pollEvents(*window);
 		
-		
+		myGrid.drawDefaults();
+		text.drawText(myGrid.dot(temp, 2), "Hampfh");
+		window->refresh();
+
 
 		temp++;
 		SDL_Delay(1);

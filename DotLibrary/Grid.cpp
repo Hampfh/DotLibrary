@@ -1,8 +1,9 @@
 #include "Grid.h"
 
-Grid::Grid(int width, int height) :
-	_gridLengthInDots(width), _gridHeightInDots(height)
+Grid::Grid(int width, int height)
 {
+	_gridSize.w = width;
+	_gridSize.h = height;
 	setup(width, height);
 }
 
@@ -87,10 +88,10 @@ void Grid::setup(int width, int height) {
 
 			// Now prevLine also resets to be one level up
 			currentDot_PrevLine = firstDotOfCurrentLine->UP;
-
+			
 		}
 		else {
-			currentDot->RIGHT = new Dot(currentDot->coordinates.x+1, currentyPos);
+			currentDot->RIGHT = new Dot(currentDot->getCoords().x + 1, currentyPos);
 			LastDot = currentDot->RIGHT;
 		}
 	}
@@ -99,7 +100,7 @@ void Grid::setup(int width, int height) {
 void Grid::visualize() {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
-	cout << "Line " << Origo->coordinates.y << endl;
+	cout << "Line " << Origo->getCoords().y << endl;
 	while (currentDot != LastDot) {
 		if (currentDot == Origo) {
 			cout << "!";
@@ -116,7 +117,7 @@ void Grid::visualize() {
 		if (currentDot->RIGHT != nullptr) {
 			cout << ">";
 		}
-		cout << "(" << currentDot->coordinates.x << " : " << currentDot->coordinates.y << ")";
+		cout << "(" << currentDot->getCoords().x << " : " << currentDot->getCoords().y << ")";
 		cout << " ";		
 
 		if (currentDot->RIGHT == nullptr) {
@@ -127,7 +128,7 @@ void Grid::visualize() {
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
 				firstDotOfCurrentLine = currentDot;
-				cout << "Line " << currentDot->coordinates.y << endl;
+				cout << "Line " << currentDot->getCoords().y << endl;
 			}
 			else {
 				cout << endl;
@@ -145,36 +146,36 @@ void Grid::drawDefaults() {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
 
-	int current_xPos = offset.x;
-	int current_yPos = offset.y;
+	int current_xPos = _offset.x;
+	int current_yPos = _offset.y;
 	
 	// Origo setup
-	Origo->screenCoordinates.x = current_xPos;
-	Origo->screenCoordinates.y = current_yPos;
-	Origo->size.w = dotSize;
-	Origo->size.h = dotSize;
-	Origo->color.r = color.r;
-	Origo->color.g = color.g;
-	Origo->color.b = color.b;
-	Origo->color.a = color.a;
+	Origo->_screenCoordinates.x = current_xPos;
+	Origo->_screenCoordinates.y = current_yPos;
+	Origo->_size.w = _dotSize;
+	Origo->_size.h = _dotSize;
+	Origo->_color.r = _color.r;
+	Origo->_color.g = _color.g;
+	Origo->_color.b = _color.b;
+	Origo->_color.a = _color.a;
 	Origo->draw();
 
-	current_xPos = current_xPos + dotSize + spacing;
+	current_xPos = current_xPos + _dotSize + _spacing;
 
 	currentDot = currentDot->RIGHT;
 
 	while (currentDot != LastDot) {
 		// Specifing properties for each dot
-		currentDot->screenCoordinates.x = current_xPos;
-		currentDot->screenCoordinates.y = current_yPos;
-		currentDot->size.w = dotSize;
-		currentDot->size.h = dotSize;
-		currentDot->color.r = color.r;
-		currentDot->color.g = color.g;
-		currentDot->color.b = color.b;
-		currentDot->color.a = color.a;
+		currentDot->_screenCoordinates.x = current_xPos;
+		currentDot->_screenCoordinates.y = current_yPos;
+		currentDot->_size.w = _dotSize;
+		currentDot->_size.h = _dotSize;
+		currentDot->_color.r = _color.r;
+		currentDot->_color.g = _color.g;
+		currentDot->_color.b = _color.b;
+		currentDot->_color.a = _color.a;
 		
-		current_xPos = current_xPos + dotSize + spacing;
+		current_xPos = current_xPos + _dotSize + _spacing;
 
 		// Drawing the current dot to the screen
 		currentDot->draw();
@@ -186,8 +187,8 @@ void Grid::drawDefaults() {
 			if (currentDot->DOWN != nullptr) {
 				currentDot = currentDot->DOWN;
 				firstDotOfCurrentLine = currentDot;
-				current_xPos = offset.x;
-				current_yPos = current_yPos + dotSize + spacing;
+				current_xPos = _offset.x;
+				current_yPos = current_yPos + _dotSize + _spacing;
 			}
 			else {
 				cerr << "The requested dot was not found" << endl;
@@ -204,10 +205,10 @@ void Grid::drawDefaults() {
 Dot* Grid::dot(int xCord, int yCord) {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
-
-	if (xCord >= 0 && xCord < _gridLengthInDots && yCord >= 0 && yCord < _gridHeightInDots) {
+	
+	if (xCord >= 0 && xCord < _gridSize.w && yCord >= 0 && yCord < _gridSize.h) {
 		while (currentDot != LastDot) {
-			if (currentDot->coordinates.x == xCord && currentDot->coordinates.y == yCord) {
+			if (currentDot->getCoords().x == xCord && currentDot->getCoords().y == yCord) {
 				return currentDot;
 			}
 

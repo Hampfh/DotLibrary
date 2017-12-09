@@ -13,20 +13,21 @@ class Text
 public:
 	Text();
 	~Text();
-	void setColor(int r, int g, int b, int a);
 	void drawText(Dot* startPointer, string text);
+	// Get function
+	inline int getDotLength() { return(_dotLength); };
+	// Set function
+	inline void setColor(int r, int g, int b) { _color.r = r, _color.g = g, _color.b = b; };
 // Private functions
 private:
 	string _readInput(char letter);
 	Grid* _letterGrid(int letterWidth);
 	void _drawText(Dot* startDot, string letterInstructions, colorTemplate color);
 	bool _letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate color);
-// Public variables
-public:
-	int dotLength;
-	int pixelLength;
 
 // Private variables
 private:
-	colorTemplate color;
+	int _dotLength;
+	int _pixelLength;
+	colorTemplate _color;
 };

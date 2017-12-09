@@ -11,16 +11,9 @@ Text::~Text()
 {
 }
 
-void Text::setColor(int r, int g, int b, int a = 255) {
-	color.r = r;
-	color.g = g;
-	color.b = b;
-	color.a = a;
-}
-
 void Text::drawText(Dot* startPointer, string text) {
-	pixelLength = 0;
-	dotLength = 0;
+	_pixelLength = 0;
+	_dotLength = 0;
 
 	Dot *currentDot = startPointer;
 	string charInstructions;
@@ -33,12 +26,12 @@ void Text::drawText(Dot* startPointer, string text) {
 		charInstructions = _readInput(text[i]);
 		charDotLength = charInstructions[0] - '0';
 		Grid* currentLetterGrid = _letterGrid(charDotLength);
-		_drawText(currentLetterGrid->dot(0,0), charInstructions, color);
+		_drawText(currentLetterGrid->dot(0,0), charInstructions, _color);
 		
 		// Total text length addon
-		dotLength = dotLength + charDotLength + 1;
+		_dotLength = _dotLength + charDotLength + 1;
 
-		if (!_letterGridToGrid(currentDot, currentLetterGrid, color)) {
+		if (!_letterGridToGrid(currentDot, currentLetterGrid, _color)) {
 			
 		}
 
@@ -55,7 +48,7 @@ void Text::drawText(Dot* startPointer, string text) {
 			break;
 		}
 	}
-	pixelLength = dotLength * startPointer->size.w;
+	_pixelLength = _dotLength * startPointer->getSize().w;
 }
 
 string Text::_readInput(char letter) {
@@ -120,10 +113,7 @@ void Text::_drawText(Dot* currentDot, string letterInstructions, colorTemplate c
 
 	int letterLength = letterInstructions.length();
 	if (letterInstructions[1] != '#') {
-		currentDot->color.r = color.r;
-		currentDot->color.g = color.g;
-		currentDot->color.b = color.b;
-		currentDot->color.a = color.a;
+		currentDot->setColor(color.r, color.g, color.b);
 	}
 
 	for (int i = 1; i < letterLength; i++) {
@@ -141,10 +131,7 @@ void Text::_drawText(Dot* currentDot, string letterInstructions, colorTemplate c
 		}
 		
 		if (letterInstructions[i + 1] != '!' && letterInstructions[i] != '#') {
-			currentDot->color.r = color.r;
-			currentDot->color.g = color.g;
-			currentDot->color.b = color.b;
-			currentDot->color.a = color.a;
+			currentDot->setColor(color.r, color.g, color.b);
 		}
 		else if (letterInstructions[i + 1] == '!') {
 			i++;
@@ -159,11 +146,8 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate colo
 	Dot* firstDotOfCurrentLineL = currentDotL;
 
 	while (currentDotL != letterGrid->LastDot) {
-		if (currentDotL->color.r == color.r && currentDotL->color.g == color.g && currentDotL->color.b == color.b && currentDotL->color.a == color.a) {
-			currentDotM->color.r = currentDotL->color.r;
-			currentDotM->color.g = currentDotL->color.g;
-			currentDotM->color.b = currentDotL->color.b;
-			currentDotM->color.a = currentDotL->color.a;
+		if (currentDotL->getColor().r == color.r && currentDotL->getColor().g == color.g && currentDotL->getColor().b == color.b && currentDotL->getColor().a == color.a) {
+			currentDotM->setColor(currentDotL->getColor().r, currentDotL->getColor().g, currentDotL->getColor().b);
 			currentDotM->draw();
 		}
 		
