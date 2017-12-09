@@ -34,7 +34,7 @@ public:
 	b minimum value is 0 : maximum value is 255
 	@Return type: bool
 	*/
-	bool setColor(int r, int g, int b) { _color.r = r, _color.g = g, _color.b = b; };
+	bool setColor(int r, int g, int b);
 // Private functions
 private:
 	string _readInput(char letter);

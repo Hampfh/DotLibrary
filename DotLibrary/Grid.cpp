@@ -97,51 +97,6 @@ void Grid::setup(int width, int height) {
 	}
 }
 
-void Grid::visualize() {
-	Dot *currentDot = Origo;
-	Dot *firstDotOfCurrentLine = Origo;
-	cout << "Line " << Origo->getCoords().y << endl;
-	while (currentDot != LastDot) {
-		if (currentDot == Origo) {
-			cout << "!";
-		}
-		if (currentDot->LEFT != nullptr) {
-			cout << "<";
-		}
-		if (currentDot->UP != nullptr) {
-			cout << "^";
-		}
-		if (currentDot->DOWN != nullptr) {
-			cout << "V";
-		}
-		if (currentDot->RIGHT != nullptr) {
-			cout << ">";
-		}
-		cout << "(" << currentDot->getCoords().x << " : " << currentDot->getCoords().y << ")";
-		cout << " ";		
-
-		if (currentDot->RIGHT == nullptr) {
-			
-			currentDot = firstDotOfCurrentLine;
-			cout << endl;
-
-			if (currentDot->DOWN != nullptr) {
-				currentDot = currentDot->DOWN;
-				firstDotOfCurrentLine = currentDot;
-				cout << "Line " << currentDot->getCoords().y << endl;
-			}
-			else {
-				cout << endl;
-				cout << "Visulization done!" << endl;
-				break;
-			}
-		}
-		else {
-			currentDot = currentDot->RIGHT;
-		}
-	} 
-}
-
 void Grid::drawDefaults() {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;

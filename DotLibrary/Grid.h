@@ -11,7 +11,6 @@ class Grid {
 public:
 	Grid(int width, int height);
 	~Grid();
-	void visualize(); // Prints the grid in text format with more information
 	/**
 	@Desciption: Draws the grid.
 	*/
