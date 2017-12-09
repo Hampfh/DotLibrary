@@ -11,25 +11,75 @@ class Grid {
 public:
 	Grid(int width, int height);
 	~Grid();
-	void visualize();
+	void visualize(); // Prints the grid in text format with more information
+	/**
+	@Desciption: Draws the grid.
+	*/
 	void drawDefaults();
+	/**
+	@Desciption: Returns a requested dot by passing in an x and y coordinate.
+	@Return type: Dot*
+	*/
 	Dot *dot(int xCord, int yCord);
 private:
 	friend class Text;
 	void setup(int width, int height);
 public:
-	// Get commands
+	/**
+	@Desciption: Returns the size of the grid as a sizeTemplate structor
+	@Return type: struct sizeTemplate
+	*/
 	inline sizeTemplate getGridSize() { return(_gridSize); };
+	/**
+	@Desciption: Returns coordinateTemplate struct with x and y offset
+	@Return type: struct coordinateTemplate
+	*/
 	inline coordinateTemplate getOffset() { return(_offset); };
+	/**
+	@Desciption: Returns colorTemplate struct with RGB values
+	@Return type: struct colorTemplate
+	*/
 	inline colorTemplate getColor() { return(_color); };
+	/**
+	@Desciption: Returns int value representing spacing between each dot in the grid
+	@Return type: int
+	*/
 	inline int getSpacing() { return(_spacing); };
+	/**
+	@Desciption: Returns int value
+	@Return type: int
+	*/
 	inline int getDotSize() { return(_dotSize); };
 
-	// Set commands
-	inline void setOffset(int x, int y) { _offset.x = x, _offset.y = y; };
-	inline void setColor(int r, int g, int b) { _color.r = r, _color.g = g, _color.b = b; };
-	inline void setSpacing(int spacing) { _spacing = spacing; };
-	inline void setDotSize(int dotSize) { _dotSize = dotSize; };
+	/**
+	@Desciption: Set grid offset values. The function will return true if executed correctly otherwise false.
+	x minimum value is 0
+	y minimum value is 0
+	@Return type: bool
+	*/
+	bool setOffset(int x, int y);
+	/**
+	@Desciption: Set grid color values represented by RGB. The function will return true if executed correctly otherwise false.
+	r minimum value is 0 : maximum value is 255
+	g minimum value is 0 : maximum value is 255
+	b minimum value is 0 : maximum value is 255
+	@Return type: bool
+	*/
+	bool setColor(int r, int g, int b);
+	/**
+	@Desciption: Set a spacing distance between all dots. The function will return true if executed correctly otherwise false.
+	x minimum value is 0
+	y minimum value is 0
+	@Return type: bool
+	*/
+	bool setSpacing(int spacing);
+	/**
+	@Desciption: Size of each dot. The function will return true if executed correctly otherwise false.
+	x minimum value is 0
+	y minimum value is 0
+	@Return type: bool
+	*/
+	bool setDotSize(int dotSize);
 private:
 	Dot *Origo = nullptr;
 	Dot *LastDot = nullptr;

@@ -16,6 +16,6 @@ void Dot::draw() {
 	rect.x = _screenCoordinates.x;
 	rect.y = _screenCoordinates.y;
 
-	SDL_SetRenderDrawColor(Window::renderer, _color.r, _color.g, _color.b, _color.a);
+	SDL_SetRenderDrawColor(Window::renderer, _color.r, _color.g, _color.b, 255);
 	SDL_RenderFillRect(Window::renderer, &rect);
 }

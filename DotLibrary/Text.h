@@ -16,6 +16,7 @@ public:
 	void drawText(Dot* startPointer, string text);
 	// Get function
 	inline int getDotLength() { return(_dotLength); };
+	inline colorTemplate getColor() { return(_color); };
 	// Set function
 	inline void setColor(int r, int g, int b) { _color.r = r, _color.g = g, _color.b = b; };
 // Private functions

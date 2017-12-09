@@ -157,7 +157,6 @@ void Grid::drawDefaults() {
 	Origo->_color.r = _color.r;
 	Origo->_color.g = _color.g;
 	Origo->_color.b = _color.b;
-	Origo->_color.a = _color.a;
 	Origo->draw();
 
 	current_xPos = current_xPos + _dotSize + _spacing;
@@ -173,7 +172,6 @@ void Grid::drawDefaults() {
 		currentDot->_color.r = _color.r;
 		currentDot->_color.g = _color.g;
 		currentDot->_color.b = _color.b;
-		currentDot->_color.a = _color.a;
 		
 		current_xPos = current_xPos + _dotSize + _spacing;
 
@@ -234,5 +232,47 @@ Dot* Grid::dot(int xCord, int yCord) {
 	else {
 		cerr << "The dot specified is not in range and therefor Origo is returned as a dot";
 		return Origo;
+	}
+}
+
+bool Grid::setOffset(int x, int y) {
+	if (x >= 0 && y >= 0) {
+		_offset.x = x;
+		_offset.y = y;
+		return(true);
+	}
+	else {
+		return(false);
+	}
+}
+
+bool Grid::setColor(int r, int g, int b) {
+	if (r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0) {
+		_color.r = r;
+		_color.g = g;
+		_color.b = b;
+		return(true);
+	}
+	else {
+		return(false);
+	}
+}
+bool Grid::setSpacing(int spacing) {
+	if (spacing >= 0) {
+		_spacing = spacing;
+		return(true);
+	}
+	else {
+		return(false);
+	}
+}
+
+bool Grid::setDotSize(int dotSize) {
+	if (dotSize >= 0) {
+		_dotSize = dotSize;
+		return(true);
+	}
+	else {
+		return(false);
 	}
 }

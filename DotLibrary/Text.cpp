@@ -146,7 +146,7 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate colo
 	Dot* firstDotOfCurrentLineL = currentDotL;
 
 	while (currentDotL != letterGrid->LastDot) {
-		if (currentDotL->getColor().r == color.r && currentDotL->getColor().g == color.g && currentDotL->getColor().b == color.b && currentDotL->getColor().a == color.a) {
+		if (currentDotL->getColor().r == color.r && currentDotL->getColor().g == color.g && currentDotL->getColor().b == color.b) {
 			currentDotM->setColor(currentDotL->getColor().r, currentDotL->getColor().g, currentDotL->getColor().b);
 			currentDotM->draw();
 		}
