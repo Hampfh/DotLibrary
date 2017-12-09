@@ -30,7 +30,7 @@ string DOTLIBRARY_FONT_DEFINITION[] = {
 	"",								// å
 	"",								// ä
 	"",								// ö
-	"3#RDLD!RDDRLL",			// 1
+	"3#RDLD!RDDRLL",				// 1
 	"5RRRR!DDLLLL!DDRRRR",			// 2
 	"5RRRR!DDLLLL!D!DRRRR!U",		// 3
 	"5DDRRRRUUDDDD",				// 4

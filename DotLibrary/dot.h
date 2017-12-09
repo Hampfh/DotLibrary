@@ -10,16 +10,38 @@ private:
 	Dot(int xPos, int yPos);
 	~Dot();
 public:
+	/**
+	@Desciption: Draws the specified dot
+	*/
 	void draw();
-	// Get commands
+	/**
+	@Desciption: Returns colorTemplate struct with RGB values
+	@Return type: struct colorTemplate
+	*/
 	inline colorTemplate getColor() { return(_color); };
+	/**
+	@Desciption: Returns the size of the dot as a sizeTemplate struct
+	@Return type: struct sizeTemplate
+	*/
 	inline sizeTemplate getSize() { return(_size); };
+	/**
+	@Desciption: Returns coordinateTemplate struct with x and y coordinates
+	@Return type: struct coordinateTemplate
+	*/
 	inline coordinateTemplate getCoords() { return(_coordinates); };
+	/**
+	@Desciption: Returns coordinateTemplate struct with x and y coordinates. This value is the topleft pixel on the dot
+	@Return type: struct coordinateTemplate
+	*/
 	inline coordinateTemplate getScreenCoords() { return(_screenCoordinates); };
-	// Set commands
-	inline void setColor(int r, int g, int b) { _color.r = r, _color.g = g, _color.b = b; };
-	inline void setSize(int width, int height) { _size.w = width, _size.h = height; };
-
+	/**
+	@Desciption: Set dot color by assigning RGB values. The function will return true if executed correctly otherwise false
+	r minimum value is 0 : maximum value is 255
+	g minimum value is 0 : maximum value is 255
+	b minimum value is 0 : maximum value is 255
+	@Return type: bool
+	*/
+	bool setColor(int r, int g, int b);
 private:
 	friend class Grid;
 	friend class Text;
