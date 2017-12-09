@@ -175,3 +175,15 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate colo
 	delete letterGrid;
 	return true;
 }
+
+bool Text::setColor(int r, int g, int b) {
+	if (r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0) {
+		_color.r = r;
+		_color.g = g;
+		_color.b = b;
+		return(true);
+	}
+	else {
+		return(false);
+	}
+}

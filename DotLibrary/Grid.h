@@ -26,7 +26,7 @@ private:
 	void setup(int width, int height);
 public:
 	/**
-	@Desciption: Returns the size of the grid as a sizeTemplate structor
+	@Desciption: Returns the size of the grid as a sizeTemplate struct
 	@Return type: struct sizeTemplate
 	*/
 	inline sizeTemplate getGridSize() { return(_gridSize); };
@@ -52,14 +52,14 @@ public:
 	inline int getDotSize() { return(_dotSize); };
 
 	/**
-	@Desciption: Set grid offset values. The function will return true if executed correctly otherwise false.
+	@Desciption: Set grid offset values. The function will return true if executed correctly otherwise false
 	x minimum value is 0
 	y minimum value is 0
 	@Return type: bool
 	*/
 	bool setOffset(int x, int y);
 	/**
-	@Desciption: Set grid color values represented by RGB. The function will return true if executed correctly otherwise false.
+	@Desciption: Set grid color by assigning RGB values. The function will return true if executed correctly otherwise false
 	r minimum value is 0 : maximum value is 255
 	g minimum value is 0 : maximum value is 255
 	b minimum value is 0 : maximum value is 255
@@ -67,14 +67,14 @@ public:
 	*/
 	bool setColor(int r, int g, int b);
 	/**
-	@Desciption: Set a spacing distance between all dots. The function will return true if executed correctly otherwise false.
+	@Desciption: Set a spacing distance between all dots. The function will return true if executed correctly otherwise false
 	x minimum value is 0
 	y minimum value is 0
 	@Return type: bool
 	*/
 	bool setSpacing(int spacing);
 	/**
-	@Desciption: Size of each dot. The function will return true if executed correctly otherwise false.
+	@Desciption: Size of each dot. The function will return true if executed correctly otherwise false
 	x minimum value is 0
 	y minimum value is 0
 	@Return type: bool
