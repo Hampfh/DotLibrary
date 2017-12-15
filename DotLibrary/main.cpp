@@ -17,9 +17,19 @@ int main(int argc, char** argv) {
 
 	Grid myGrid(200, 10);
 
+	myGrid.setDotSize(20);
+
+	myGrid.setSpacing(0);
+
+	Text text;
+	text.setColor(0,0,200);
+	text.createText(myGrid.dot(2, 2), "EDVIN");
+	
+
 	while (true) {
 
 		myGrid.drawDefaults();
+		text.drawText();
 		window->refresh();
 
 		SDL_Delay(1);

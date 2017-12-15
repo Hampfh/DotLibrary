@@ -11,19 +11,19 @@ Text::~Text()
 {
 }
 
-void Text::drawText(Dot* startPointer, string text) {
+void Text::drawText() {
 	_pixelLength = 0;
 	_dotLength = 0;
 
-	Dot *currentDot = startPointer;
+	Dot *currentDot = referenseDot;
 	string charInstructions;
 	int charDotLength;
 	bool running = true;
 	
-	for (int i = 0; i < int(text.length()); i++) {
-		text[i] = tolower(text[i]);
+	for (int i = 0; i < int(textContent.length()); i++) {
+		textContent[i] = tolower(textContent[i]);
 
-		charInstructions = _readInput(text[i]);
+		charInstructions = _readInput(textContent[i]);
 		charDotLength = charInstructions[0] - '0';
 		Grid* currentLetterGrid = _letterGrid(charDotLength);
 		_drawText(currentLetterGrid->dot(0,0), charInstructions, _color);
@@ -48,7 +48,7 @@ void Text::drawText(Dot* startPointer, string text) {
 			break;
 		}
 	}
-	_pixelLength = _dotLength * startPointer->getSize().w;
+	_pixelLength = _dotLength * referenseDot->getSize().w;
 }
 
 string Text::_readInput(char letter) {
@@ -186,4 +186,9 @@ bool Text::setColor(int r, int g, int b) {
 	else {
 		return(false);
 	}
+}
+
+void Text::createText(Dot* startPointer, string text) {
+	referenseDot = startPointer;
+	textContent = text;
 }

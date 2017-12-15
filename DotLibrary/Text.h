@@ -5,7 +5,6 @@
 #include "font.h"
 
 #include <string>
-using namespace std;
 
 class Text
 {
@@ -16,7 +15,7 @@ public:
 	/**
 	@Desciption: Draws the text class
 	*/
-	void drawText(Dot* startPointer, string text);
+	void drawText();
 	/**
 	@Desciption: Get the width of the text in dots
 	@Return type: int
@@ -35,6 +34,7 @@ public:
 	@Return type: bool
 	*/
 	bool setColor(int r, int g, int b);
+	void createText(Dot* startPointer, string text);
 // Private functions
 private:
 	string _readInput(char letter);
@@ -44,6 +44,8 @@ private:
 
 // Private variables
 private:
+	string textContent;
+	Dot* referenseDot = nullptr;
 	int _dotLength;
 	int _pixelLength;
 	colorTemplate _color;
