@@ -25,7 +25,7 @@ bool Window::init() {
 	}
 
 	// Create the window
-	_window = SDL_CreateWindow(_title.c_str(), 
+	_window = SDL_CreateWindow(_title.c_str(),
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 		_width, _height, 0);
 	// Errorcheck

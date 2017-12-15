@@ -3,7 +3,6 @@
 #include "Grid.h"
 #include "Definitions.h"
 #include "font.h"
-
 #include <string>
 
 class Text
@@ -34,17 +33,17 @@ public:
 	@Return type: bool
 	*/
 	bool setColor(int r, int g, int b);
-	void createText(Dot* startPointer, string text);
+	void createText(Dot* startPointer, std::string text);
 // Private functions
 private:
-	string _readInput(char letter);
+	std::string _readInput(char letter);
 	Grid* _letterGrid(int letterWidth);
-	void _drawText(Dot* startDot, string letterInstructions, colorTemplate color);
+	void _drawText(Dot* startDot, std::string letterInstructions, colorTemplate color);
 	bool _letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate color);
 
 // Private variables
 private:
-	string textContent;
+	std::string textContent;
 	Dot* referenseDot = nullptr;
 	int _dotLength;
 	int _pixelLength;

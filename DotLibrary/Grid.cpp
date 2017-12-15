@@ -144,7 +144,7 @@ void Grid::drawDefaults() {
 				current_yPos = current_yPos + _dotSize + _spacing;
 			}
 			else {
-				cerr << "The requested dot was not found" << endl;
+				std::cerr << "The requested dot was not found" << std::endl;
 				break;
 			}
 		}
@@ -174,7 +174,7 @@ Dot* Grid::dot(int xCord, int yCord) {
 					firstDotOfCurrentLine = currentDot;
 				}
 				else {
-					cerr << "The requested dot was not found" << endl;
+					std::cerr << "The requested dot was not found" << std::endl;
 					break;
 				}
 			}
@@ -185,7 +185,7 @@ Dot* Grid::dot(int xCord, int yCord) {
 		return nullptr;
 	}
 	else {
-		cerr << "The dot specified is not in range and therefor Origo is returned as a dot";
+		std::cerr << "The dot specified is not in range and therefor Origo is returned as a dot";
 		return Origo;
 	}
 }
