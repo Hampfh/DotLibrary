@@ -3,7 +3,6 @@
 #include "Window.h"
 #include "Definitions.h"
 
-using namespace std;
 
 class Dot {
 private:
