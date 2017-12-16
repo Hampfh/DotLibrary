@@ -13,17 +13,17 @@ void pollEvents(Window &window) {
 }
 
 int main(int argc, char** argv) {
-	Window *window = new Window("DotLibrary is very cool", 800, 800);
+	Window *window = new Window("DotLibrary is very cool", 1600, 800);
 
 	Grid myGrid(200, 10);
 
-	myGrid.setDotSize(20);
+	myGrid.setDotSize(10);
 
-	myGrid.setSpacing(0);
+	myGrid.setSpacing(5);
 
 	Text text;
 	text.setColor(0,0,200);
-	text.createText(myGrid.dot(2, 2), "EDVIN");
+	text.createText(myGrid.dot(2, 2), "DotLibrary 2.0");
 	
 
 	while (true) {
