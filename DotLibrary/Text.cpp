@@ -16,7 +16,7 @@ void Text::drawText() {
 	_dotLength = 0;
 
 	Dot *currentDot = referenseDot;
-	string charInstructions;
+	std::string charInstructions;
 	int charDotLength;
 	bool running = true;
 	
@@ -51,7 +51,7 @@ void Text::drawText() {
 	_pixelLength = _dotLength * referenseDot->getSize().w;
 }
 
-string Text::_readInput(char letter) {
+std::string Text::_readInput(char letter) {
 	int letterNum;
 	
 	switch (letter) {
@@ -112,7 +112,7 @@ Grid* Text::_letterGrid(int letterWidth) {
 	return thisLetter;
 }
 
-void Text::_drawText(Dot* currentDot, string letterInstructions, colorTemplate color) {
+void Text::_drawText(Dot* currentDot, std::string letterInstructions, colorTemplate color) {
 
 	int letterLength = letterInstructions.length();
 	if (letterInstructions[1] != '#') {
@@ -191,7 +191,7 @@ bool Text::setColor(int r, int g, int b) {
 	}
 }
 
-void Text::createText(Dot* startPointer, string text) {
+void Text::createText(Dot* startPointer, std::string text) {
 	referenseDot = startPointer;
 	textContent = text;
 }

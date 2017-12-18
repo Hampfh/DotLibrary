@@ -1,11 +1,8 @@
 #pragma once
-#include <string>
 #include <iostream>
 #include "Window.h"
 #include "Dot.h"
 #include "Definitions.h"
-
-using namespace std;
 
 class Grid {
 public:
