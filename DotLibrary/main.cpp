@@ -23,14 +23,14 @@ int main(int argc, char** argv) {
 
 	Text text;
 	text.setColor(0,0,200);
-	text.createText(myGrid.dot(2, 2), "EDVIN");
+	text.createText(myGrid.dot(2, 2), "Score:");
 	
 
 	while (true) {
 
 		myGrid.drawDefaults();
 		text.drawText();
-		window->refresh();
+		window->refresh(255,255,255);
 
 		SDL_Delay(1);
 		

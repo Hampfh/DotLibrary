@@ -55,6 +55,9 @@ string Text::_readInput(char letter) {
 	int letterNum;
 	
 	switch (letter) {
+	case ':':
+		letterNum = DOTLIB_FONT_CHAR_COLON;
+		break;
 	case ' ':
 		letterNum = DOTLIB_FONT_CHAR_SPACE;
 		break;
