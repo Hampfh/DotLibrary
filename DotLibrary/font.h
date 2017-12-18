@@ -35,7 +35,7 @@ static std::string DOTLIBRARY_FONT_DEFINITION[] = {
 	"5RRRRDDDDLLLLUUU",				// o
 	"5RRRR!DD!LLLLUDDD",			// p
 	"5RRRRDDD!DL!UD!LLLUUU",		// q
-	"4RRR!DDLDD!RL!UULLUDDD",		// r
+	"5RRRR!DD!LLLLUDDDR!R!R!RU",		// r
 	"5RRRRLLLLDDRRRRDDLLLL",		// s
 	"5RRRRLLDDDD",					// t
 	"5DDDDRRRRUUUU",				// u
@@ -60,5 +60,6 @@ static std::string DOTLIBRARY_FONT_DEFINITION[] = {
 	"4#",							// space
 	"2#D!D!DDRU",					// .
 	"2#D!D!DD",						// ,	
-	"1DDD!D"						// !
+	"1DDD!D",						// !
+	"1#DD!D"						// :
 };
