@@ -3,7 +3,9 @@
 #include <iostream>
 
 Text::Text(){
-
+	_color.r = 254;
+	_color.g = 254;
+	_color.b = 254;
 }
 
 
@@ -181,15 +183,18 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate colo
 }
 
 bool Text::setColor(int r, int g, int b) {
-	if (r < 256 && r > -1 &&
-		g < 256 && g > -1 && 
-		b < 256 && b > -1) {
+	if (r < 255 && r > -1 &&
+		g < 255 && g > -1 && 
+		b < 255 && b > -1) {
 		_color.r = r;
 		_color.g = g;
 		_color.b = b;
 		return(true);
 	}
 	else {
+		_color.r = 254;
+		_color.g = 254;
+		_color.b = 254;
 		return(false);
 	}
 }

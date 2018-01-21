@@ -1,15 +1,24 @@
 #pragma once
 #include <iostream>
-#include "Window.h"
 #include "Dot.h"
 #include "Definitions.h"
+#include "Text.h"
+
+// forward declaration
+class Dot;
 
 class Grid {
 public:
 	Grid(int width, int height);
 	~Grid();
 	/**
-	@Desciption: Draws the grid.
+	@Description: Sets all grid values to what's specified 
+	@Return type: void
+	*/
+	void clear();
+	/**
+	@Description: Draws the grid.
+	@Return type: void
 	*/
 	void drawDefaults();
 	/**

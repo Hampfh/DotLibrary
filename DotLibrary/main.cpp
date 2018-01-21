@@ -2,24 +2,31 @@
 #include "Window.h"
 #include "Text.h"
 
+void pollEvents(Window &win) {
+	SDL_Event evnt;
+	if (SDL_PollEvent(&evnt)) {
+		win.pollEvent(evnt);
+	}
+}
+
 int main(int argv, char** argc) {
-	Window win("TEST", 800, 800);
 	Grid gri(100, 100);
+	Window myWin("Awsome window", &gri, 800, 800, DTL_HIDE_CMD);
 	gri.setSpacing(0);
 	gri.setDotSize(5);
 	gri.setColor(20, 20, 20);
-	gri.drawDefaults();
-
+	gri.clear();
 	Text text;
-	text.setColor(254, 255, 255);
-
-	gri.dot(20, 20)->draw(60, 60, 60);
-
+	text.setColor(255, 255, 255);
 	text.drawText(gri.dot(20, 30), "TEST");
+	while (true) {
+		pollEvents(myWin);
+		gri.dot(20, 20)->setColor(100, 170, 100);
 
-	win.refresh();
-
-	while (true);
-
+		myWin.refresh();
+		if (myWin.isClosed()) {
+			break;
+		}
+	}
 	return 1;
 }

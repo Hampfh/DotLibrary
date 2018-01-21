@@ -5,6 +5,10 @@
 #include "font.h"
 #include <string>
 
+// forward declaration
+class Grid;
+class Dot;
+
 class Text
 {
 //Public functions
@@ -20,6 +24,11 @@ public:
 	@Return type: int
 	*/
 	inline int getDotLength() { return(_dotLength); };
+	/**
+	@Description: Get the text width in pixels
+	@Return type: int
+	*/
+	inline int getPixelLength() { return(_pixelLength); };
 	/**
 	@Desciption: Returns colorTemplate struct with RGB values
 	@Return type: struct colorTemplate

@@ -1,20 +1,31 @@
 #pragma once
-
+#include <iostream>
+#include <Windows.h>
 #include <string>
 #include <SDL.h>
 #include "Definitions.h"
 #include "Dot.h"
+#include "Grid.h"
+
+class Grid;
+
+#define DTL_HIDE_CMD 1
 
 class Window {
 public:
 	/**
 	@Desciption: Creates a default window
-	title = name of the screen
-	width = window width in pixels
-	height = window height in pixels
+	title = name of the window
+	width = width of window in pixels
+	height = height of window in pixels
 	*/
-	Window(const std::string &title, int width, int height);
+	Window(const std::string &title, Grid* mainGrid, int width, int height, int flags = 0);
 	~Window();
+	/**
+	@Description: Returns the renderer for the window class
+	@Return type: SDL_Renderer*
+	*/
+	inline SDL_Renderer *getRenderer() { return (renderer); };	
 	/**
 	@Desciption: Requires an SDL_Event input
 	*/
@@ -45,6 +56,7 @@ private:
 
 	bool _closed = false;
 	SDL_Window *_window = nullptr;
+	Grid* _mainGrid = nullptr;
 
 	static SDL_Renderer *renderer;
 };

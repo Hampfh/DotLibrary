@@ -1,12 +1,15 @@
 #include "window.h"
-#include <iostream>
 
 SDL_Renderer *Window::renderer = nullptr;
 
-Window::Window(const std::string &title, int width, int height) :
-_title(title), _width(width), _height(height)
-{
-	// Runnes init();
+Window::Window(const std::string &title, Grid* mainGrid, int width, int height, int flags) {
+	if (flags & DTL_HIDE_CMD) {
+		FreeConsole();
+	}
+	_title = title;
+	_width = width;
+	_height = height;
+	_mainGrid = mainGrid;
 	_closed = !init();
 }
 
@@ -17,7 +20,6 @@ Window::~Window() {
 }
 
 bool Window::init() {
-
 	// Setup SDL Video (screen)
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		std::cerr << "Failed to initalize SDL.h\n";
@@ -55,6 +57,7 @@ void Window::pollEvent(SDL_Event &evnt) {
 
 // Clear render the screen with all it's content
 int Window::refresh(int r, int g, int b) const {
+	_mainGrid->drawDefaults();
 	if (!(r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0)) {
 		return(false);
 	}

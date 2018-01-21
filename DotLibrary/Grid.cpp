@@ -97,13 +97,13 @@ void Grid::setup(int width, int height) {
 	}
 }
 
-void Grid::drawDefaults() {
+void Grid::clear() {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
 
 	int current_xPos = _offset.x;
 	int current_yPos = _offset.y;
-	
+
 	// Origo setup
 	Origo->_screenCoordinates.x = current_xPos;
 	Origo->_screenCoordinates.y = current_yPos;
@@ -112,7 +112,6 @@ void Grid::drawDefaults() {
 	Origo->_color.r = _color.r;
 	Origo->_color.g = _color.g;
 	Origo->_color.b = _color.b;
-	Origo->draw();
 
 	current_xPos = current_xPos + _dotSize + _spacing;
 
@@ -127,6 +126,45 @@ void Grid::drawDefaults() {
 		currentDot->_color.r = _color.r;
 		currentDot->_color.g = _color.g;
 		currentDot->_color.b = _color.b;
+
+		current_xPos = current_xPos + _dotSize + _spacing;
+
+		if (currentDot->RIGHT == nullptr) {
+
+			currentDot = firstDotOfCurrentLine;
+
+			if (currentDot->DOWN != nullptr) {
+				currentDot = currentDot->DOWN;
+				firstDotOfCurrentLine = currentDot;
+				current_xPos = _offset.x;
+				current_yPos = current_yPos + _dotSize + _spacing;
+			}
+			else {
+				std::cerr << "The requested dot was not found" << std::endl;
+				break;
+			}
+		}
+		else {
+			currentDot = currentDot->RIGHT;
+		}
+	}
+}
+
+void Grid::drawDefaults() {
+	Dot *currentDot = Origo;
+	Dot *firstDotOfCurrentLine = Origo;
+
+	int current_xPos = _offset.x;
+	int current_yPos = _offset.y;
+	
+	// Origo setup
+	Origo->draw();
+
+	current_xPos = current_xPos + _dotSize + _spacing;
+
+	currentDot = currentDot->RIGHT;
+
+	while (currentDot != LastDot) {
 		
 		current_xPos = current_xPos + _dotSize + _spacing;
 
@@ -185,8 +223,8 @@ Dot* Grid::dot(int xCord, int yCord) {
 		return nullptr;
 	}
 	else {
-		std::cerr << "The dot specified is not in range and therefor Origo is returned as a dot";
-		return Origo;
+		std::cerr << "The dot specified is not in range and therefor lastDot is returned" << std::endl;
+		return LastDot;
 	}
 }
 
