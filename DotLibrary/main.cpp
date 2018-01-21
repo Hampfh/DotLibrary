@@ -1,6 +1,5 @@
 #include "Grid.h"
 #include "Window.h"
-#include "Text.h"
 
 void pollEvents(Window &win) {
 	SDL_Event evnt;
