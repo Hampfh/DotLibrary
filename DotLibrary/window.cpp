@@ -48,15 +48,6 @@ void Window::pollEvent(SDL_Event &evnt) {
 	case SDL_QUIT:
 		_closed = true;
 		break;
-
-		// This event get triggered when a key is pressed
-	case SDL_KEYDOWN:
-		switch (evnt.key.keysym.sym) {
-		case SDLK_ESCAPE:
-			_closed = true;
-			break;
-		}
-
 	default:
 		break;
 	}

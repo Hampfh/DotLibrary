@@ -12,9 +12,9 @@ public:
 	Text();
 	~Text();
 	/**
-	@Desciption: Draws the text class
+	@Desciption: Draws a text string to a grid. The dot entered be in the top left
 	*/
-	void drawText();
+	void drawText(Dot* startDot, std::string text);
 	/**
 	@Desciption: Get the width of the text in dots
 	@Return type: int
@@ -33,13 +33,13 @@ public:
 	@Return type: bool
 	*/
 	bool setColor(int r, int g, int b);
-	void createText(Dot* startPointer, std::string text);
 // Private functions
 private:
 	std::string _readInput(char letter);
 	Grid* _letterGrid(int letterWidth);
-	void _drawText(Dot* startDot, std::string letterInstructions, colorTemplate color);
-	bool _letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate color);
+	void _drawText(); // Looping through the text string 
+	void _drawCharacter(Dot* startDot, std::string letterInstructions, colorTemplate color); // Draws each character
+	bool _letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate color); // Replicates the temp grid to the main grid
 
 // Private variables
 private:

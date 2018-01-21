@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-Text::Text()
-{
+Text::Text(){
+
 }
 
 
@@ -11,7 +11,7 @@ Text::~Text()
 {
 }
 
-void Text::drawText() {
+void Text::_drawText() {
 	_pixelLength = 0;
 	_dotLength = 0;
 
@@ -24,9 +24,10 @@ void Text::drawText() {
 		textContent[i] = tolower(textContent[i]);
 
 		charInstructions = _readInput(textContent[i]);
+		// Get the first character in the list (length character)
 		charDotLength = charInstructions[0] - '0';
 		Grid* currentLetterGrid = _letterGrid(charDotLength);
-		_drawText(currentLetterGrid->dot(0,0), charInstructions, _color);
+		_drawCharacter(currentLetterGrid->dot(0,0), charInstructions, _color);
 		
 		// Total text length addon
 		_dotLength = _dotLength + charDotLength + 1;
@@ -112,7 +113,7 @@ Grid* Text::_letterGrid(int letterWidth) {
 	return thisLetter;
 }
 
-void Text::_drawText(Dot* currentDot, std::string letterInstructions, colorTemplate color) {
+void Text::_drawCharacter(Dot* currentDot, std::string letterInstructions, colorTemplate color) {
 
 	int letterLength = letterInstructions.length();
 	if (letterInstructions[1] != '#') {
@@ -180,7 +181,9 @@ bool Text::_letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate colo
 }
 
 bool Text::setColor(int r, int g, int b) {
-	if (r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0) {
+	if (r < 256 && r > -1 &&
+		g < 256 && g > -1 && 
+		b < 256 && b > -1) {
 		_color.r = r;
 		_color.g = g;
 		_color.b = b;
@@ -191,7 +194,8 @@ bool Text::setColor(int r, int g, int b) {
 	}
 }
 
-void Text::createText(Dot* startPointer, std::string text) {
+void Text::drawText(Dot* startPointer, std::string text) {
 	referenseDot = startPointer;
 	textContent = text;
+	_drawText();
 }
