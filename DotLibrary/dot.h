@@ -12,7 +12,7 @@ public:
 	/**
 	@Desciption: Draws the specified dot
 	*/
-	void draw();
+	void draw(int r = -1, int g = -1, int b = -1);
 	/**
 	@Desciption: Returns colorTemplate struct with RGB values
 	@Return type: struct colorTemplate
