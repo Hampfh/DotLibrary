@@ -9,7 +9,9 @@
 
 class Grid;
 
-#define DTL_HIDE_CMD 1
+enum flags {
+	DTL_HIDE_CMD = 0x01,
+};
 
 class Window {
 public:
