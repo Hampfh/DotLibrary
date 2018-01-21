@@ -9,22 +9,12 @@ Dot::~Dot(){
 	
 }
 
-void Dot::draw(int r, int g, int b) {
+void Dot::draw() {
 	SDL_Rect rect;
 	rect.w = _size.w;
 	rect.h = _size.h;
 	rect.x = _screenCoordinates.x;
 	rect.y = _screenCoordinates.y;
-
-	if (r != -1) {
-		_color.r = r;
-	}
-	if (g != -1) {
-		_color.g = g;
-	}
-	if (b != -1) {
-		_color.b = b;
-	}
 
 	SDL_SetRenderDrawColor(Window::renderer, _color.r, _color.g, _color.b, 255);
 	SDL_RenderFillRect(Window::renderer, &rect);

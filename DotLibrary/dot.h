@@ -3,16 +3,11 @@
 #include "Window.h"
 #include "Definitions.h"
 
-
 class Dot {
 private:
 	Dot(int xPos, int yPos);
 	~Dot();
 public:
-	/**
-	@Desciption: Draws the specified dot
-	*/
-	void draw(int r = -1, int g = -1, int b = -1);
 	/**
 	@Desciption: Returns colorTemplate struct with RGB values
 	@Return type: struct colorTemplate
@@ -41,6 +36,11 @@ public:
 	@Return type: bool
 	*/
 	bool setColor(int r, int g, int b);
+// Private functions
+private:
+	void draw();
+
+// Private variables
 private:
 	friend class Grid;
 	friend class Text;
