@@ -36,9 +36,9 @@ public:
 	inline colorTemplate getColor() { return(_color); };
 	/**
 	@Desciption: Set text color by assigning RGB values. The function will return true if executed correctly otherwise false
-	r minimum value is 0 : maximum value is 255
-	g minimum value is 0 : maximum value is 255
-	b minimum value is 0 : maximum value is 255
+	r minimum value is 0 : maximum value is 254
+	g minimum value is 0 : maximum value is 254
+	b minimum value is 0 : maximum value is 254
 	@Return type: bool
 	*/
 	bool setColor(int r, int g, int b);

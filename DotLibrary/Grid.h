@@ -17,18 +17,15 @@ public:
 	*/
 	void clear();
 	/**
-	@Description: Draws the grid.
-	@Return type: void
-	*/
-	void drawDefaults();
-	/**
 	@Desciption: Returns a requested dot by passing in an x and y coordinate.
 	@Return type: Dot*
 	*/
 	Dot *dot(int xCord, int yCord);
 private:
 	friend class Text;
+	friend class Window;
 	void setup(int width, int height);
+	void drawDefaults();
 public:
 	/**
 	@Desciption: Returns the size of the grid as a sizeTemplate struct
