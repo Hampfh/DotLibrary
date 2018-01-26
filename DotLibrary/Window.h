@@ -21,8 +21,18 @@ public:
 	width = width of window in pixels
 	height = height of window in pixels
 	*/
-	Window(const std::string &title, Grid* mainGrid, int width, int height, int flags = 0);
+	Window(const std::string &title, int width, int height, int flags = 0);
 	~Window();
+	/**
+	@Description: Connects the grid to the window renderer. When a grid is connected it will be rendered together with refresh
+	@Return type: void
+	*/
+	void connectGrid(Grid* gridConnection);
+	/**
+	@Description: Detaches the grid from the window renderer. Grid will no longer be rendered together with window refresh
+	@Return type: void
+	*/
+	void detachGrid(Grid* gridConnection);
 	/**
 	@Description: Returns the renderer for the window class
 	@Return type: SDL_Renderer*
@@ -58,7 +68,8 @@ private:
 
 	bool _closed = false;
 	SDL_Window *_window = nullptr;
-	Grid* _mainGrid = nullptr;
+	Grid* _firstGrid = nullptr;
+	Grid* _lastGrid = nullptr;
 
 	static SDL_Renderer *renderer;
 };

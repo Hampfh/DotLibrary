@@ -93,5 +93,6 @@ private:
 	coordinateTemplate _offset;
 	colorTemplate _color;
 	
+	Grid* next = nullptr;
 };
 
