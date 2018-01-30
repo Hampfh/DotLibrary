@@ -2,14 +2,13 @@
 
 SDL_Renderer *Window::renderer = nullptr;
 
-Window::Window(const std::string &title, Grid* mainGrid, int width, int height, int flags) {
+Window::Window(const std::string &title, int width, int height, int flags) {
 	if (flags & DTL_HIDE_CMD) {
 		FreeConsole();
 	}
 	_title = title;
 	_width = width;
 	_height = height;
-	_mainGrid = mainGrid;
 	_closed = !init();
 }
 
@@ -17,6 +16,41 @@ Window::~Window() {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(_window);
 	SDL_Quit();
+}
+
+void Window::connectGrid(Grid* gridConnection) {
+	if (_firstGrid == nullptr) {
+		_firstGrid = gridConnection;
+		_lastGrid = gridConnection;
+	}
+	else {
+		_lastGrid->next = gridConnection;
+		_lastGrid = _lastGrid->next;
+	}
+}
+
+void Window::detachGrid(Grid* detachGrid) {
+	Grid* currentGrid = _firstGrid;
+	Grid* prevGrid = currentGrid;
+	while (currentGrid != nullptr) {
+		if (currentGrid == detachGrid) {
+			if (currentGrid == _firstGrid) {
+				_firstGrid = _firstGrid->next;
+				delete currentGrid;
+			}
+			else if (currentGrid == _lastGrid) {
+				_lastGrid = prevGrid;
+				_lastGrid->next = nullptr;
+				delete currentGrid;
+			}
+			else {
+				prevGrid->next = currentGrid->next;
+				delete currentGrid;
+			}
+		}
+		prevGrid = currentGrid;
+		currentGrid = currentGrid->next;
+	}
 }
 
 bool Window::init() {
@@ -57,7 +91,11 @@ void Window::pollEvent(SDL_Event &evnt) {
 
 // Clear render the screen with all it's content
 int Window::refresh(int r, int g, int b) const {
-	_mainGrid->drawDefaults();
+	Grid* currentGrid = _firstGrid;
+	while (currentGrid != nullptr) {
+		currentGrid->drawDefaults();
+		currentGrid = currentGrid->next;
+	}
 	if (!(r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0)) {
 		return(false);
 	}
