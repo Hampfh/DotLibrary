@@ -6,6 +6,9 @@ Window::Window(const std::string &title, int width, int height, int flags) {
 	if (flags & DTL_HIDE_CMD) {
 		FreeConsole();
 	}
+
+	DTL_FLAGS = flags;
+
 	_title = title;
 	_width = width;
 	_height = height;
@@ -36,16 +39,13 @@ void Window::detachGrid(Grid* detachGrid) {
 		if (currentGrid == detachGrid) {
 			if (currentGrid == _firstGrid) {
 				_firstGrid = _firstGrid->next;
-				delete currentGrid;
 			}
 			else if (currentGrid == _lastGrid) {
 				_lastGrid = prevGrid;
 				_lastGrid->next = nullptr;
-				delete currentGrid;
 			}
 			else {
 				prevGrid->next = currentGrid->next;
-				delete currentGrid;
 			}
 		}
 		prevGrid = currentGrid;
@@ -63,7 +63,8 @@ bool Window::init() {
 	// Create the window
 	_window = SDL_CreateWindow(_title.c_str(),
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		_width, _height, 0);
+		_width, _height, (DTL_FLAGS & DTL_RESIZABLE_WINDOW ? SDL_WINDOW_RESIZABLE : 0) | (DTL_FLAGS & DTL_HIDDEN_WINDOW ? SDL_WINDOW_HIDDEN : 0));
+	
 	// Errorcheck
 	if (_window == nullptr) {
 		std::cerr << "Failed to create window\n";

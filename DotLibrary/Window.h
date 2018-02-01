@@ -11,6 +11,8 @@ class Grid;
 
 enum flags {
 	DTL_HIDE_CMD = 0x01,
+	DTL_RESIZABLE_WINDOW = 0x02,
+	DTL_HIDDEN_WINDOW = 0x04
 };
 
 class Window {
@@ -29,7 +31,7 @@ public:
 	*/
 	void connectGrid(Grid* gridConnection);
 	/**
-	@Description: Detaches the grid from the window renderer. Grid will no longer be rendered together with window refresh
+	@Description: Detaches the grid from the window renderer. Grid will no longer be rendered together with refresh
 	@Return type: void
 	*/
 	void detachGrid(Grid* gridConnection);
@@ -70,6 +72,7 @@ private:
 	SDL_Window *_window = nullptr;
 	Grid* _firstGrid = nullptr;
 	Grid* _lastGrid = nullptr;
-
 	static SDL_Renderer *renderer;
+
+	int DTL_FLAGS;
 };

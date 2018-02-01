@@ -11,7 +11,7 @@ void pollEvents(Window &win) {
 
 int main(int argv, char** argc) {
 	Grid gri(100, 100);
-	Window myWin("Awsome window", 800, 800, DTL_HIDE_CMD);
+	Window myWin("Awsome window", 800, 800, DTL_RESIZABLE_WINDOW);
 	myWin.connectGrid(&gri);
 	gri.setSpacing(0);
 	gri.setDotSize(5);
@@ -20,6 +20,8 @@ int main(int argv, char** argc) {
 	Text text;
 	text.setColor(255, 255, 255);
 	text.drawText(gri.dot(20, 30), "TEST");
+
+
 	while (true) {
 		pollEvents(myWin);
 		gri.dot(20, 20)->setColor(100, 170, 100);
