@@ -141,6 +141,7 @@ void Grid::clear() {
 			}
 			else {
 				std::cerr << "The requested dot was not found" << std::endl;
+				throw;
 				break;
 			}
 		}
@@ -183,6 +184,7 @@ void Grid::drawDefaults() {
 			}
 			else {
 				std::cerr << "The requested dot was not found" << std::endl;
+				throw;
 				break;
 			}
 		}
@@ -193,39 +195,26 @@ void Grid::drawDefaults() {
 }
 
 // Returns the requested dot to the user
-Dot* Grid::dot(int xCord, int yCord) {
+Dot* Grid::dot(int xCoord, int yCoord) {
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;
-	
-	if (xCord >= 0 && xCord < _gridSize.w && yCord >= 0 && yCord < _gridSize.h) {
+
+	if (xCoord >= 0 && xCoord < _gridSize.w && yCoord >= 0 && yCoord < _gridSize.h) {
 		while (currentDot != LastDot) {
-			if (currentDot->getCoords().x == xCord && currentDot->getCoords().y == yCord) {
+			if (currentDot->getCoords().x == xCoord && currentDot->getCoords().y == yCoord)
 				return currentDot;
-			}
 
-			if (currentDot->RIGHT == nullptr) {
-
-				currentDot = firstDotOfCurrentLine;
-
-				if (currentDot->DOWN != nullptr) {
-					currentDot = currentDot->DOWN;
-					firstDotOfCurrentLine = currentDot;
-				}
-				else {
-					std::cerr << "The requested dot was not found" << std::endl;
-					break;
-				}
-			}
-			else {
+			if (currentDot->getCoords().x < xCoord)
 				currentDot = currentDot->RIGHT;
-			}
+
+			if (currentDot->getCoords().y < yCoord)
+				currentDot = currentDot->DOWN;
 		}
-		return nullptr;
 	}
 	else {
-		std::cerr << "The dot specified is not in range and therefor lastDot is returned" << std::endl;
-		return LastDot;
+		std::cerr << "ERROR: The dot specified is not in range and therefor Dot(0,0) is returned" << std::endl;
 	}
+	return Origo;
 }
 
 bool Grid::setOffset(int x, int y) {

@@ -16,19 +16,19 @@ int main(int argv, char** argc) {
 	gri.setDotSize(5);
 	gri.setColor(20, 20, 20);
 	gri.clear();
-	Text text;
-	text.setColor(255, 255, 255);
-	text.drawText(gri.dot(20, 30), "TEST");
 
+	Text testText;
 
 	while (true) {
 		pollEvents(myWin);
-		gri.dot(20, 20)->setColor(100, 170, 100);
+		
+		testText.drawText(gri.dot(2, 2), "12h50");
 
 		myWin.refresh();
 		if (myWin.isClosed()) {
 			break;
 		}
+		system("pause");
 	}
 	return 1;
 }

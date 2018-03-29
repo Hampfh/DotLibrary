@@ -20,7 +20,7 @@ public:
 	@Desciption: Returns a requested dot by passing in an x and y coordinate.
 	@Return type: Dot*
 	*/
-	Dot *dot(int xCord, int yCord);
+	Dot *dot(int xCoord, int yCoord);
 private:
 	friend class Text;
 	friend class Window;

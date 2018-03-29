@@ -2,6 +2,10 @@
 
 #include <iostream>
 
+int ctoi(char character) {
+	return character - '0';
+}
+
 Text::Text(){
 	_color.r = 254;
 	_color.g = 254;
@@ -57,6 +61,8 @@ void Text::_drawText() {
 std::string Text::_readInput(char letter) {
 	int letterNum;
 	
+	if (isdigit(letter) && ctoi(letter) != 0)
+		return DOTLIBRARY_FONT_DEFINITION[28 + ctoi(letter)];
 	switch (letter) {
 	case ':':
 		letterNum = DOTLIB_FONT_CHAR_COLON;
@@ -72,33 +78,6 @@ std::string Text::_readInput(char letter) {
 		break;
 	case '!':
 		letterNum = DOTLIB_FONT_CHAR_EXCLAMATION;
-		break;
-	case '1':
-		letterNum = DOTLIB_FONT_CHARINT_ONE;
-		break;
-	case '2':
-		letterNum = DOTLIB_FONT_CHARINT_TWO;
-		break;
-	case '3':
-		letterNum = DOTLIB_FONT_CHARINT_THREE;
-		break;
-	case '4':
-		letterNum = DOTLIB_FONT_CHARINT_FOUR;
-		break;
-	case '5':
-		letterNum = DOTLIB_FONT_CHARINT_FIVE;
-		break;
-	case '6':
-		letterNum = DOTLIB_FONT_CHARINT_SIX;
-		break;
-	case '7':
-		letterNum = DOTLIB_FONT_CHARINT_SEVEN;
-		break;
-	case '8':
-		letterNum = DOTLIB_FONT_CHARINT_EIGHT;
-		break;
-	case '9':
-		letterNum = DOTLIB_FONT_CHARINT_NINE;
 		break;
 	case '0':
 		letterNum = DOTLIB_FONT_CHARINT_ZERO;

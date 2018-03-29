@@ -97,9 +97,9 @@ int Window::refresh(int r, int g, int b) const {
 		currentGrid->drawDefaults();
 		currentGrid = currentGrid->next;
 	}
-	if (!(r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0)) {
+	if (!(r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0))
 		return(false);
-	}
+	
 	// RenderPreset is the final rendering command that renders to screen
 	SDL_RenderPresent(renderer);
 	// Set background color
