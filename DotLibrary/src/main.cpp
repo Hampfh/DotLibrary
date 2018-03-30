@@ -19,10 +19,10 @@ int main(int argv, char** argc) {
 
 
 	Text testText;
-	testText.setColor(20, 20, 200);
+	testText.setColor(200, 200, 200);
 	while (true) {
 		pollEvents(myWin);
-		testText.drawText(gri.dot(2, 2), "10, yo");
+		testText.drawText(gri.dot(20, 2), "10, yo");
 		myWin.refresh();
 		system("pause");
 		if (myWin.isClosed())

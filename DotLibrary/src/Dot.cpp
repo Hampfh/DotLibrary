@@ -21,13 +21,17 @@ void Dot::draw() {
 }
 
 bool Dot::setColor(int r, int g, int b) {
-	if (r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0) {
+	if (
+		r <= 255 && r >= 0 && 
+		g <= 255 && g >= 0 && 
+		b <= 255 && b >= 0) 
+	{
 		_color.r = r;
 		_color.g = g;
 		_color.b = b;
-		return(true);
+		return(false);
 	}
 	else {
-		return(false);
+		return(true);
 	}
 }

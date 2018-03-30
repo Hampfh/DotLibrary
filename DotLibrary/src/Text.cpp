@@ -177,13 +177,13 @@ bool Text::setColor(int r, int g, int b) {
 		_color.r = r;
 		_color.g = g;
 		_color.b = b;
-		return(true);
+		return(false);
 	}
 	else {
 		_color.r = 254;
 		_color.g = 254;
 		_color.b = 254;
-		return(false);
+		return(true);
 	}
 }
 

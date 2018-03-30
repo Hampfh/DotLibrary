@@ -58,27 +58,21 @@ void Grid::setup(int width, int height) {
 	// Grid creation
 	for (int current_yPos = 0; current_yPos < height; current_yPos++) {
 		for (int current_xPos = 1; current_xPos < width; current_xPos++) {
-			// All lines but the first is executed bellow
-			if (current_yPos > 0) {
-				currentDot->RIGHT = new Dot(current_xPos, current_yPos);
-				prevDot = currentDot;
-				currentDot = currentDot->RIGHT;
-				currentDot->LEFT = prevDot;
+			// Create one line
+			currentDot->RIGHT = new Dot(current_xPos, current_yPos);
+			prevDot = currentDot;
+			currentDot = currentDot->RIGHT;
+			currentDot->LEFT = prevDot;
 
+			// Does not run at the first line
+			if (current_yPos > 0) {
 				// Connectiong current Dot with the Dot at the line above
 				currentDot_PrevLine = currentDot_PrevLine->RIGHT;
 				currentDot->UP = currentDot_PrevLine;
 				currentDot_PrevLine->DOWN = currentDot;
 			}
-			// First line is executed here
-			else {
-				currentDot->RIGHT = new Dot(current_xPos, current_yPos);
-				prevDot = currentDot;
-				currentDot = currentDot->RIGHT;
-				currentDot->LEFT = prevDot;
-			}
 		}
-		// Reset x cordinate for next level
+		// Create a new line underneath the current one
 		if (current_yPos < height - 1) {
 			// Reset the currentDot to the beginning of the line
 			currentDot = firstDotOfCurrentLine;
