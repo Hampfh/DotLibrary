@@ -46,8 +46,8 @@ public:
 private:
 	std::string _readInput(char letter);
 	Grid* _letterGrid(int letterWidth);
-	void _drawText(); // Looping through the text string 
-	void _drawCharacter(Dot* startDot, std::string letterInstructions, colorTemplate color); // Draws each character
+	bool _drawText(); // Looping through the text string 
+	void _drawCharacter(Dot* startDot, const std::string& letterInstructions, colorTemplate color); // Draws each character
 	bool _letterGridToGrid(Dot* mainGrid, Grid* letterGrid, colorTemplate color); // Replicates the temp grid to the main grid
 
 // Private variables

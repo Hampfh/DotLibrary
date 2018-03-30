@@ -2,6 +2,16 @@
 
 Grid::Grid(int width, int height)
 {
+	try {
+		if (width < 0)
+			throw width;
+		else if (height < 0)
+			throw height;
+	}
+	catch (int e) {
+		std::cout << "ERROR: " << e << " is not a posetive number" << std::endl;
+		throw;
+	}
 	_gridSize.w = width;
 	_gridSize.h = height;
 	setup(width, height);
@@ -37,10 +47,8 @@ Grid::~Grid(){
 // Code underneath creates the grid with all dots and their coordinates
 void Grid::setup(int width, int height) {
 	// Initializing variables
-		
+	Timing timer("GRID");
 	Origo = new Dot(0, 0);
-	LastDot = nullptr;
-
 	// Temporary pointers 
 	Dot *currentDot = Origo;
 	Dot *firstDotOfCurrentLine = Origo;

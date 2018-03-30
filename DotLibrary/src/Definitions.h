@@ -12,6 +12,6 @@ struct coordinateTemplate {
 };
 
 struct sizeTemplate {
-	int w;
-	int h;
+	unsigned int w;
+	unsigned int h;
 };
