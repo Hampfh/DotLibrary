@@ -141,19 +141,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Definitions.h" />
-    <ClInclude Include="Dot.h" />
-    <ClInclude Include="Font.h" />
-    <ClInclude Include="Grid.h" />
-    <ClInclude Include="Text.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="src\Definitions.h" />
+    <ClInclude Include="src\Dot.h" />
+    <ClInclude Include="src\Font.h" />
+    <ClInclude Include="src\Grid.h" />
+    <ClInclude Include="src\Text.h" />
+    <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dot.cpp" />
-    <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Text.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="src\Dot.cpp" />
+    <ClCompile Include="src\Grid.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Text.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
