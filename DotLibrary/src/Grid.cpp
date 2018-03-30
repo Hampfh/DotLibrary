@@ -56,11 +56,11 @@ void Grid::setup(int width, int height) {
 	Dot *currentDot_PrevLine = Origo;
 
 	// Grid creation
-	for (int currentyPos = 0; currentyPos < height; currentyPos++) {
-		for (int currentxPos = 1; currentxPos < width; currentxPos++) {
+	for (int current_yPos = 0; current_yPos < height; current_yPos++) {
+		for (int current_xPos = 1; current_xPos < width; current_xPos++) {
 			// All lines but the first is executed bellow
-			if (currentyPos > 0) {
-				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
+			if (current_yPos > 0) {
+				currentDot->RIGHT = new Dot(current_xPos, current_yPos);
 				prevDot = currentDot;
 				currentDot = currentDot->RIGHT;
 				currentDot->LEFT = prevDot;
@@ -70,21 +70,21 @@ void Grid::setup(int width, int height) {
 				currentDot->UP = currentDot_PrevLine;
 				currentDot_PrevLine->DOWN = currentDot;
 			}
-			// First line i executed here
+			// First line is executed here
 			else {
-				currentDot->RIGHT = new Dot(currentxPos, currentyPos);
+				currentDot->RIGHT = new Dot(current_xPos, current_yPos);
 				prevDot = currentDot;
 				currentDot = currentDot->RIGHT;
 				currentDot->LEFT = prevDot;
 			}
 		}
 		// Reset x cordinate for next level
-		if (currentyPos < height - 1) {
+		if (current_yPos < height - 1) {
 			// Reset the currentDot to the beginning of the line
 			currentDot = firstDotOfCurrentLine;
 
 			// CurrentDot creates a Dot underneath itself
-			currentDot->DOWN = new Dot(0, currentyPos + 1);
+			currentDot->DOWN = new Dot(0, current_yPos + 1);
 			prevDot = currentDot;
 
 			// CurrentDot now moves down and connects with prevDot
@@ -99,7 +99,7 @@ void Grid::setup(int width, int height) {
 			
 		}
 		else {
-			currentDot->RIGHT = new Dot(currentDot->getCoords().x + 1, currentyPos);
+			currentDot->RIGHT = new Dot(currentDot->getCoords().x + 1, current_yPos);
 			LastDot = currentDot->RIGHT;
 		}
 	}
@@ -229,10 +229,10 @@ bool Grid::setOffset(int x, int y) {
 	if (x >= 0 && y >= 0) {
 		_offset.x = x;
 		_offset.y = y;
-		return(true);
+		return(false);
 	}
 	else {
-		return(false);
+		return(true);
 	}
 }
 
@@ -241,28 +241,28 @@ bool Grid::setColor(int r, int g, int b) {
 		_color.r = r;
 		_color.g = g;
 		_color.b = b;
-		return(true);
+		return(false);
 	}
 	else {
-		return(false);
+		return(true);
 	}
 }
 bool Grid::setSpacing(int spacing) {
 	if (spacing >= 0) {
 		_spacing = spacing;
-		return(true);
+		return(false);
 	}
 	else {
-		return(false);
+		return(true);
 	}
 }
 
 bool Grid::setDotSize(int dotSize) {
 	if (dotSize >= 0) {
 		_dotSize = dotSize;
-		return(true);
+		return(false);
 	}
 	else {
-		return(false);
+		return(true);
 	}
 }
