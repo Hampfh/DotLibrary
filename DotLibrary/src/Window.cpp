@@ -98,7 +98,7 @@ int Window::refresh(int r, int g, int b) const {
 		currentGrid = currentGrid->next;
 	}
 	if (!(r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0))
-		return(false);
+		return(true);
 	
 	// RenderPreset is the final rendering command that renders to screen
 	SDL_RenderPresent(renderer);
@@ -106,5 +106,5 @@ int Window::refresh(int r, int g, int b) const {
 	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
 	// Clears the screen
 	SDL_RenderClear(renderer);
-	return(true);
+	return(false);
 }

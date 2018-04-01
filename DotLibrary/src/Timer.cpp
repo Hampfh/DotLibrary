@@ -1,11 +1,11 @@
-#include "Timing.h"
+#include "Timer.h"
 
-Timing::Timing(std::string optionalInput) : nameOfFunction(optionalInput){
+Timer::Timer(std::string optionalInput) : nameOfFunction(optionalInput){
 	start = std::chrono::high_resolution_clock::now();
 }
 
 
-Timing::~Timing() {
+Timer::~Timer() {
 	end = std::chrono::high_resolution_clock::now();
 	duration = end - start;
 

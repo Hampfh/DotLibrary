@@ -147,7 +147,7 @@
     <ClInclude Include="src\Grid.h" />
     <ClInclude Include="src\Text.h" />
     <ClInclude Include="src\Window.h" />
-    <ClInclude Include="src\Timing.h" />
+    <ClInclude Include="src\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot.cpp" />
@@ -155,7 +155,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Text.cpp" />
     <ClCompile Include="src\Window.cpp" />
-    <ClCompile Include="src\Timing.cpp" />
+    <ClCompile Include="src\Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

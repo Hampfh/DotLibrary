@@ -3,11 +3,11 @@
 #include <iostream>
 #include <string>
 
-class Timing
+class Timer
 {
 public:
-	Timing(std::string optionalInput = "UNKNOWN");
-	~Timing();
+	Timer(std::string optionalInput = "UNKNOWN");
+	~Timer();
 private:
 	std::string nameOfFunction;
 	std::chrono::time_point<std::chrono::steady_clock> start, end;

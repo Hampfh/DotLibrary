@@ -22,7 +22,10 @@ int main(int argv, char** argc) {
 	testText.setColor(200, 200, 200);
 	while (true) {
 		pollEvents(myWin);
-		testText.drawText(gri.dot(20, 2), "10, yo");
+		{
+			Timer timer("TEXT");
+			testText.drawText(gri.dot(20, 2), "10, yo");
+		}
 		myWin.refresh();
 		system("pause");
 		if (myWin.isClosed())

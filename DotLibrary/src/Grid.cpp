@@ -47,7 +47,7 @@ Grid::~Grid(){
 // Code underneath creates the grid with all dots and their coordinates
 void Grid::setup(int width, int height) {
 	// Initializing variables
-	Timing timer("GRID");
+	Timer timer("GRID");
 	Origo = new Dot(0, 0);
 	// Temporary pointers 
 	Dot *currentDot = Origo;

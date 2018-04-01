@@ -3,7 +3,7 @@
 #include "Dot.h"
 #include "Definitions.h"
 #include "Text.h"
-#include "Timing.h"
+#include "Timer.h"
 
 // forward declaration
 class Dot;
