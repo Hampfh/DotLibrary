@@ -72,7 +72,7 @@ namespace DTL {
 		Grid* _lastGrid = nullptr;
 		static SDL_Renderer *renderer;
 
-		int DTL_FLAGS;
+		int _FLAGS;
 	};
 
 }

@@ -10,7 +10,7 @@ void pollEvents(DTL::Window &win) {
 
 int main(int argv, char** argc) {
 	DTL::Grid gri(100, 100);
-	DTL::Window myWin("Awsome window", 800, 800, DTL::DTL_RESIZABLE_WINDOW);
+	DTL::Window myWin("Awsome window", 800, 800, DTL::RESIZABLE_WINDOW);
 	myWin.connectGrid(&gri);
 	gri.setSpacing(0);
 	gri.setDotSize(5);

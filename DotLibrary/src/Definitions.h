@@ -19,9 +19,9 @@ namespace DTL {
 	};
 
 	enum Flags {
-		DTL_HIDE_CMD = 0x01,
-		DTL_RESIZABLE_WINDOW = 0x02,
-		DTL_HIDDEN_WINDOW = 0x04
+		HIDE_CMD = 0x01,
+		RESIZABLE_WINDOW = 0x02,
+		HIDDEN_WINDOW = 0x04
 	};
 
 }
