@@ -8,9 +8,11 @@ void pollEvents(DTL::Window &win) {
 	}
 }
 
+using namespace DTL;
+
 int main(int argv, char** argc) {
-	DTL::Grid gri(100, 100);
-	DTL::Window myWin("Awsome window", 800, 800, DTL::RESIZABLE_WINDOW);
+	Grid gri(100, 100);
+	Window myWin("Awsome window", 800, 800, DTL::RESIZABLE_WINDOW);
 	myWin.connectGrid(&gri);
 	gri.setSpacing(0);
 	gri.setDotSize(5);
@@ -18,15 +20,12 @@ int main(int argv, char** argc) {
 	gri.clear();
 
 
-	DTL::Text testText;
+	Text testText;
 	testText.setColor(200, 200, 200);
+	testText.drawText(gri.dot(20, 2), "10, yo");
 	while (true) {
 		pollEvents(myWin);
-		DTL::Dot* test = gri.dot(0, 0);
-		{
-			DTL::Timer timer("TEXT");
-			testText.drawText(gri.dot(20, 2), "10, yo");
-		}
+		DTL::coordinateTemplate test = gri.dot(0, 0)->getCoords();
 		myWin.refresh();
 		if (myWin.isClosed())
 			return 0;
