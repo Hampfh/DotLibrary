@@ -1,6 +1,5 @@
 ##### Dependencies:
 * SDL2 library
-* Visual Studio
 
 ## SDL2 Installation:
 #### 1. Download Package (Outside visual studio)
