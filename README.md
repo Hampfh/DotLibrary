@@ -1,3 +1,8 @@
+![](https://hampus.hallkvist.org/img/dotLib.png)
+
+## Description
+Dotlibrary is a library created to siftly start developing graphics applications in c++. The library is built on SDL and uses grids for a simple way to view graphics. The grid based structure is scalable and flexible. It is aslo possible to have multiple grids with different resolutions for different things such as text and messages.
+ ***
 ##### Dependencies:
 * SDL2 library
 
